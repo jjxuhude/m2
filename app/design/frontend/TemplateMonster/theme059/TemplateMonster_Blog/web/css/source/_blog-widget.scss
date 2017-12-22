@@ -1,0 +1,145 @@
+// Main styles
+
+.widget.blog-posts {
+    clear: both;
+    font-family: $font;
+    width: 100%;
+
+    .post-items {
+        display: flex;
+        -webkit-display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0 -15px;
+
+        .post-item {
+            flex-basis: 33.333%;
+            -webkit-flex-basis: 33.333%;
+            list-style: none;
+            padding: 0 15px;
+            box-sizing: border-box;
+
+            .item-wrapper {
+                padding-bottom: 43px;
+            }
+        }
+        // Image
+        .post-image {
+            margin-bottom: 21px;
+
+            img {
+                width: 100%;
+                vertical-align: top;
+            }
+        }
+
+        // Title
+        .post-title {
+            margin-bottom: 6px;
+
+            h3 {
+                font-family: $font;
+                font-size: $title-size;
+                line-height: $title-lh;
+                font-weight: 700;
+                margin: 0;
+
+                a {
+                    color: $title-color;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+            }
+        }
+
+        // Short Content
+        .post-short-content {
+            font-size: inherit;
+            line-height: inherit;
+            margin-bottom: 12px;
+        }
+
+        // Post link
+        .post-link {
+            @include button-block;
+        }
+
+        // Post data
+        .post-data {
+            padding: 11px 0 0;
+            color: $post-data-color;
+            display: flex;
+            @include make-flex;
+            @include justify-content(space-between);
+
+            .create-date,
+            .post-author,
+            .post-comments {
+                a {
+                    color: $default;
+                    text-decoration: none;
+                    &:hover {
+                        color: $primary;
+                    }
+                }
+                a span:before,
+                &:before {
+                    padding-right: 4px;
+                    color: $text-lightest;
+                    vertical-align: middle;
+                }
+            }
+            .post-author {
+                @include order(1);
+                font-weight: 700;
+            }
+            .create-date {
+                @include order(2);
+                margin-left: 4px;
+
+                time {
+                    display: inline-block;
+                }
+            }
+            .post-comments {
+                @include order(3);
+                margin-left: auto;
+                @include font-icon('\ea7b');
+            }
+
+            @media (max-width: 1200px) {
+                display: block;
+                overflow: hidden;
+
+                .create-date,
+                .post-author {
+                    display: block;
+                }
+
+                .post-comments {
+                    float: right;
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            .post-item {
+                flex-basis: 50%;
+                -webkit-flex-basis: 50%;
+
+                .item-wrapper {
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        @media (max-width: 350px) {
+            .post-item {
+                flex-basis: 100%;
+                -webkit-flex-basis: 100%;
+            }
+        }
+    }
+}

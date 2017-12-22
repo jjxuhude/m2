@@ -1,0 +1,60 @@
+
+//
+//  Sidebar
+//  ---------------------------------------------
+
+
+.sidebar{
+    [role="tablist"] [role="tabpanel"]{
+        margin-bottom: 0;
+    }
+
+    .collapsible-block,
+    .filter-wrapper{
+        position: relative;
+        margin-bottom: 40px;
+        max-width: 500px;
+        @media (min-width: $screen-mob-min){
+            margin-bottom: 68px;
+        }
+    }
+
+    .collapsible-block{
+        .block-title{
+            padding-bottom: 25px;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 30px;
+            @extend .heading-3;
+        }
+
+        .opener{
+            @include font-icon('\e929');
+            display: block;
+            @extend .heading-3;
+            position: relative;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 20px;
+            cursor: pointer;
+            line-height: 26px;
+            &:before{
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 26px;
+                height: 26px;
+                border-radius: 2px;
+                text-align: center;
+                font-size: 14px;
+                line-height: 1;
+                padding: 6px 0;
+                border: 1px solid $border-color;
+            }
+
+            &[aria-expanded="false"]:before{
+                content: '\e926';
+            }
+        }
+    }
+}

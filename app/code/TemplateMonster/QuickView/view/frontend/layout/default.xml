@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="before.body.end">
+            <container name="quick_view">
+                <block class="TemplateMonster\QuickView\Block\Styles" name="quick_view.styles" as="quick_view_styles" />
+                <block class="TemplateMonster\QuickView\Block\Button\Init" name="quick_view.button_init" as="quick_view_button_init" />
+            </container>
+        </referenceContainer>
+    </body>
+</page>

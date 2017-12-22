@@ -1,0 +1,14 @@
+<div class="sm-header-panel-canvas"></div>
+
+<?php $columnsLimit = $block->getColumnsLimit() ?: 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<div class="sm-header-nav-wrap">
+    <button class="sm-header-nav-toggle"><span></span></button>
+    <nav class="navigation" data-action="navigation">
+        <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+            <?php /* @escapeNotVerified */ echo $_menu; ?>
+            <?php /* @escapeNotVerified */ echo $block->getChildHtml(); ?>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,12 @@
+/* 
+ *  Shop By Brand by TemplateMonster 2016
+ *  v1.0.0
+ */
+
+// Transition
+@mixin transition($trsn) {
+  -moz-transition: $trsn;
+  -o-transition: $trsn;
+  -webkit-transition: $trsn;
+  transition: $trsn;
+}

@@ -1,0 +1,84 @@
+﻿@import '_normalize.scss';
+@import '_variables.scss';
+@import '_mixins.scss';
+.container {
+    @include container-box; // _grid-system.scss
+}
+
+.container-fluid {
+    @include make-container($gutter-width);
+}
+
+.row {
+    @include make-row($gutter-width);
+}
+
+@for $i from 1 through 12 {
+    @each $j in 'xs',
+    'sm',
+    'md',
+    'lg' {
+        [class*='col-#{$j}-#{$i}'] {
+            @include make-col($gutter-width);
+        }
+    }
+}
+
+@media (min-width: $screen-xs-min) {
+    *+[class*='col-xs-'] {
+        margin-top: 0;
+    }
+    .row {
+        @include make-flex();
+        @include flex(0 1 auto);
+        @include flex-direction(row);
+        @include flex-wrap(wrap);
+    }
+    @for $i from 1 through 12 {
+        @each $j in 'xs',
+        'sm',
+        'md',
+        'lg' {
+            .row>[class*='col-#{$j}-#{$i}'] {
+                @include flex(0 0 auto);
+                @include flex-basis(100%);
+            }
+        }
+    }
+    @include make-grid-system("xs");
+}
+
+@media (min-width: $screen-sm-min) {
+    *+[class*='col-sm-'] {
+        margin-top: 0;
+    }
+    @include make-grid-system("sm");
+}
+
+@media (min-width: $screen-md-min) {
+    *+[class*='col-md-'] {
+        margin-top: 0;
+    }
+    @include make-grid-system("md");
+}
+
+@media (min-width: $screen-lg-min) {
+    *+[class*='col-lg-'] {
+        margin-top: 0;
+    }
+    @include make-grid-system("lg");
+}
+
+@media (min-width: $screen-xl-min) {
+    *+[class*='col-xl-'] {
+        margin-top: 0;
+    }
+    @include make-grid-system("xl");
+}
+
+@media (min-width: $screen-xxl-min) {
+    *+[class*='col-xxl-'] {
+        margin-top: 0;
+    }
+    @include make-grid-system("xxl");
+}

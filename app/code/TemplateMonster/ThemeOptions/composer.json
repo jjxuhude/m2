@@ -1,0 +1,19 @@
+{
+    "name" : "templatemonster/magento2-theme-options",
+    "description": "Magento2 Theme Options",
+    "type": "magento2-module",
+    "version": "1.1.1",
+
+    "autoload": {
+        "psr-4": {
+            "TemplateMonster\\ThemeOptions\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "extra": {
+        "isStandalone": "true",
+        "magentoVersion": "v2.1.5"
+    }
+}

@@ -1,0 +1,24 @@
+#themeupdater_general{
+    .loader{
+        display: inline-block;
+        position: relative;
+        top: 4px;
+        left: 12px;
+        vertical-align: top;
+        margin-right: 20px;
+        opacity: 0;
+    }
+
+    .messages{
+        display: inline-block;
+        padding-top: 5px;
+        &.positive{
+            color: #5ebb60;
+        }
+        &.negative{
+            color: #d53749;
+        }
+    }
+}
+
+

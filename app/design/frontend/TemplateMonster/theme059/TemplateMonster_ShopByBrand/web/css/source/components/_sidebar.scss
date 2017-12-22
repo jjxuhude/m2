@@ -1,0 +1,63 @@
+// Sidebar
+
+.sidebar .block.block-brand {
+    .brand-items {
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0;
+        margin:0 -8px 10px;
+    }
+    .brand-item {
+        flex-basis: 46%;
+        text-align: center;
+        padding: 0 8px;
+        margin-bottom: 16px;
+
+        .brand-item-info{
+            border: 1px solid $border-color;
+            padding: 4px;
+        }
+
+        .brand-item-name {
+            a{
+                font-size: 14px;
+                line-height: 18px;
+                font-weight: 700;
+                color: $primary;
+                &:hover{
+                    color: $accent;
+                }
+            }
+        }
+
+        .brand-image-photo {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px;
+            position: relative;
+
+            &:hover{
+                opacity: .7;
+            }
+
+            img {
+                vertical-align: top;
+                max-width: 100%;
+            }
+        }
+    }
+
+    .action.primary{
+        @include button-block;
+        @include button-block__primary;
+        width: 100%;
+        text-align: center;
+        padding: 14px 33px;
+
+        @media (min-width: $screen-xs-min) and (max-width: $screen-md-min - 1){
+            width: auto;
+        }
+    }
+}

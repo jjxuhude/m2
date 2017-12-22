@@ -1,0 +1,951 @@
+//
+//  Main Styles
+//  -------------------------------------------
+* {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: $default-font-family;
+    font-weight: $default-font-weight;
+    font-size: $default-font-size;
+    line-height: 1.7;
+}
+
+body {
+    text-align: left;
+    -webkit-text-size-adjust: none;
+    color: $default;
+    background: $white;
+    &.sm-mobile {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+button.action {
+    @include button-block; // _mixins.scss
+    &.primary {
+        @include button-block__primary; // _mixins.scss
+    }
+    &.tocart,
+    &#bundle-slide {
+        &:before {
+            font-size: 20px;
+            line-height: 20px;
+            vertical-align: text-bottom;
+            @include font-icon__pseudo('\e61b', $iconfont);
+        }
+    }
+}
+
+button.action-dismiss {
+    @include button-block; // _mixins.scss
+}
+
+button.action-accept {
+    @include button-block;
+    @include button-block__primary; // _mixins.scss
+}
+
+.actions-toolbar a.back {
+    @include button-block__back; // _mixins.scss
+}
+
+.cover {
+    background-size: cover;
+}
+
+.list-decimal,
+.list-decimal li {
+    list-style: decimal;
+}
+
+// man
+.page-main {
+    @media (min-width: $screen-md-min) {
+        margin: $gutter-width 0 65px;
+    }
+    @media (max-width: $screen-md-min - 1) {
+        margin: $gutter-width / 2 0 32px;
+    }
+}
+
+//
+//  Icons
+//  ---------------------------------------------
+.towishlist,
+.tocompare {
+    position: relative;
+    span {
+        display: none;
+    }
+}
+
+.product-social-links .mailto {
+    padding: 0 $indent-small/2;
+    @include font-icon('\ea3a');
+}
+
+.towishlist {
+    @include font-icon('\e63c', $iconfont);
+}
+
+.tocompare {
+    @include font-icon('\e67b', $iconfont);
+}
+
+.action.edit {
+    @include font-icon('\edc3');
+    >span {
+        display: none;
+    }
+}
+
+.action.delete {
+    @include font-icon('\ea5d');
+    >span {
+        display: none;
+    }
+}
+
+.translate-edit-icon {
+    width: auto;
+}
+
+// Stack footer
+.page-wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    @include make-flex;
+    @include flex-direction(column);
+    @include align-items(stretch);
+    @include justify-content(space-between);
+}
+
+//
+//  Spinner
+//  ---------------------------------------------
+.ajax-loading,
+.checkout-index-index,
+.slider-pro-wrapper {
+    .loading-mask {
+        background: rgba(255, 255, 255, 0.5);
+        position: fixed;
+        z-index: 999;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: auto;
+        img,
+        p {
+            display: none;
+        }
+        .loader,
+        .loader:before,
+        .loader:after {
+            display: block;
+            position: absolute;
+            top: 50%;
+            height: 10px;
+        }
+        .loader {
+            margin-top: -5px;
+            animation: loader-spinner 2550ms ease-out infinite;
+            background: $text-light;
+            left: 50%;
+            margin-left: -100px;
+            width: 30px;
+        }
+        .loader:before {
+            content: "";
+            margin-top: -25px;
+            animation: loader-spinner 1250ms ease-in 150ms infinite;
+            background: $primary;
+            left: 0;
+            width: 15px;
+        }
+        .loader:after {
+            content: "";
+            margin-top: 15px;
+            animation: loader-spinner 550ms ease-in-out 350ms infinite;
+            background: $accent;
+            left: 0;
+            width: 50px;
+        }
+    }
+}
+
+@keyframes loader-spinner {
+    100% {
+        width: 200px;
+    }
+}
+
+.checkout-index-index .loading-mask {
+    background: $white;
+}
+
+.slider-pro-wrapper .loading-mask.for-slider {
+    position: absolute;
+}
+
+//
+//  Header
+//  ----------------------------------------
+@mixin navigation-container() {
+    min-width: $container-xs;
+    max-width: $screen-xs-min;
+    @media (min-width: $screen-sm-min) {
+        max-width: $screen-sm-min;
+    }
+    @media (min-width: $screen-md-min) {
+        max-width: $screen-md-min;
+    }
+    @media (min-width: $screen-lg-min) {
+        max-width: $screen-lg-min;
+    }
+    @media (min-width: $screen-xl-min) {
+        max-width: $screen-xl-min;
+    }
+    @media (min-width: $screen-xxl-min) {
+        max-width: $container-xxl;
+    }
+}
+
+
+/*=====================================
+/*
+/*  Mega Menu switch off
+/*
+=====================================*/
+
+nav.navigation>ul:not(.ui-menu) {
+    display: none;
+}
+
+.sm-desktop nav.navigation {
+    background: $primary;
+    >.ui-menu {
+        @include make-flex;
+        @include justify-content(center);
+        @include align-items(center);
+        @include navigation-container;
+        padding: 15px $gutter-width / 2;
+        position: relative;
+        margin: 0 auto;
+    }
+    li.level-top {
+        padding: 0 $gutter-width - 10;
+        &.parent>a {
+            position: relative;
+            @include font-icon('\e600', $iconfont);
+            &:before {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: -8px;
+                margin: 0 10px;
+                text-align: center;
+                transform: rotate(-180deg);
+                transition: $default-transition;
+            }
+            &:hover,
+            &.ui-state-active,
+            &.ui-state-focus {
+                &:before {
+                    transform: rotate(0);
+                }
+            }
+        }
+        >a {
+            display: block;
+            color: $white;
+            font-weight: 400;
+            padding: 9px 10px;
+            text-transform: uppercase;
+            @media(min-width: $screen-md-min) {
+                font-size: $default-font-size + 4;
+            }
+            @media(max-width: $screen-md-min - 1) {
+                font-size: $default-font-size + 2;
+            }
+            &:hover {
+                color: $yellow;
+            }
+        }
+        &.has-active>a,
+        .ui-state-active,
+        .ui-state-focus {
+            color: $yellow;
+        }
+        >ul:not(.megamenu-wrapper) {
+            position: absolute;
+            z-index: 999;
+            &,
+            ul {
+                top: 100% !important;
+                width: 215px;
+                background: $white;
+                font-size: $default-font-size - 2;
+                line-height: 14px;
+                padding: 10px 0;
+                box-shadow: $default-header-shadow;
+                @media (min-width: $screen-lg-min) {
+                    padding: 15px 0;
+                }
+                li {
+                    display: block;
+                    width: 100%;
+                    padding: 0 30px;
+                    +li {
+                        margin-top: 10px;
+                    }
+                    &.parent>a:after {
+                        @include font-icon__pseudo($icon: '\e928');
+                        font-size: 8px;
+                        line-height: inherit;
+                        padding-left: 4px;
+                    }
+                    >a {
+                        padding: 5px 0;
+                        color: $default;
+                        &:hover {
+                            color: $black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .level1>ul:not(.megamenu-wrapper) {
+        position: absolute !important;
+        top: 0 !important;
+        left: calc(100% + 1px) !important;
+    }
+}
+
+.sm-desktop .page-header__content {
+    padding: 21px 0 17px;
+    .container {
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        @include flex-wrap(wrap);
+    }
+}
+
+.sm-mobile .page-header__content {
+    padding: 18px 0;
+    text-align: center;
+    .logo img {
+        max-width: 200px;
+    }
+    .welcome {
+        display: none;
+    }
+}
+
+//
+//  Switchers
+//  ---------------------------------------------
+.header-switchers {
+    @include clearfix;
+    .switcher {
+        float: left;
+    }
+}
+
+.switcher-label {
+    display: none;
+}
+
+.switcher-options {
+    display: inline-block;
+    &.active.switcher-dropdown {
+        display: inline-block;
+    }
+}
+
+.switcher-dropdown {
+    display: none;
+}
+
+.links {
+    li {
+        display: inline-block;
+    }
+}
+
+.sm-desktop {
+    .sm-header_customer-menu-container {
+        margin-left: 50px;
+        position: relative;
+    }
+    .sm-header_customer-menu-toggle {
+        display: block;
+        font-family: $iconfont;
+        width: 40px;
+        height: 40px;
+        @include toggle-icons-via-rotation(40px, 30px, $accent, '\e64f', '\e604');
+    }
+    .sm-header_customer-menu-container .sm-header_customer-menu .welcome {
+        display: none;
+    }
+    .sm-header_customer-menu-wrap.ui-dialog {
+        position: absolute;
+        z-index: 95;
+        top: calc(100% + 4px);
+        right: 0;
+        width: 248px;
+        .ui-dialog-buttonpane {
+            display: none;
+        }
+        &.active {
+            visibility: visible;
+            box-shadow: $default-header-shadow;
+        }
+        .links li {
+            display: block;
+            padding: 6px 0 5px;
+        }
+        .links a {
+            display: block;
+            color: $default;
+            font-size: 13px;
+            line-height: 16px;
+            font-weight: 400;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+    .sm-header_customer-menu.ui-dialog-content {
+        background: $white;
+        box-shadow: $default-header-shadow;
+        text-align: left;
+        padding: 22px 16px 34px 38px;
+    }
+}
+
+.sm-header_customer-menu-wrap.ui-dialog .links a .qty {
+    &:before {
+        content: '(';
+    }
+    &:after {
+        content: ')';
+    }
+}
+
+//
+//  Navigation
+//  ---------------------------------------------
+.page-top {
+    margin-bottom: $indent-base;
+}
+
+//
+//  Breadcrumbs
+//  ---------------------------------------------
+.breadcrumbs {
+    background: $bg-dark;
+    padding: $indent-small 0;
+    .items {
+        .item {
+            display: inline-block;
+            font-size: $default-font-size;
+            margin-right: $indent-small;
+            padding-right: $indent-small;
+            position: relative;
+            &:after {
+                content: '|';
+                position: absolute;
+                right: -4px;
+                top: 0;
+                color: $text-dark;
+            }
+            &:last-child {
+                margin-right: 0;
+                padding-right: 0;
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+//Page title
+.page-title-wrapper {
+    margin-bottom: 16px;
+    @media (min-width: $screen-sm-min) {
+        margin-bottom: 24px;
+    }
+    @media (min-width: $screen-md-min) {
+        margin-bottom: 32px;
+    }
+    .page-title {
+        margin-bottom: 0;
+    }
+}
+
+//
+//  Page layouts
+//  ---------------------------------------------
+.columns>.row {
+    @include make-flex();
+    @include flex(0 1 auto);
+    @include flex-direction(row);
+    @include flex-wrap(wrap);
+}
+
+//Three columns
+.page-layout-3columns {
+    .grid-left {
+        @include order(1);
+    }
+    .grid-main {
+        @include order(2);
+    }
+    .grid-right {
+        @include order(3);
+    }
+}
+
+//Two columns with right aside
+.page-layout-2columns-right {
+    .grid-main {
+        @include order(1);
+    }
+    .grid-right {
+        @include order(2);
+    }
+}
+
+//Two columns with left aside
+.page-layout-2columns-left {
+    .grid-left {
+        @include order(1);
+    }
+    .grid-main {
+        @include order(2);
+    }
+}
+
+@media (max-width: $screen-mob-min - 1) {
+    .page-layout-3columns,
+    .page-layout-2columns-right,
+    .page-layout-2columns-left {
+        .grid-left,
+        .grid-main {
+            @include flex-basis(100%);
+        }
+        .grid-main {
+            @include order(1);
+        }
+        .grid-left {
+            @include order(2);
+            margin-top: $gutter-width;
+        }
+        .grid-right {
+            @include order(3);
+            margin-top: $gutter-width;
+        }
+    }
+}
+
+//
+//  Blocks
+//  ---------------------------------------------
+.block-title {
+    color: $text-dark;
+    font-size: 20px;
+    margin-bottom: 32px;
+    strong {
+        font-weight: 700;
+        width: 100%;
+        display: inline-block;
+        text-transform: uppercase;
+    }
+    .action {
+        float: right;
+        padding: 0;
+        background: none;
+        line-height: inherit;
+        &.edit {
+            padding: 5px;
+        }
+    }
+    .counter {
+        width: 100%;
+        font-size: .8rem;
+        line-height: 1;
+        margin-top: 0;
+    }
+}
+
+.block-subtitle {
+    @extend .heading-4;
+    display: block;
+}
+
+//
+//  Boxes
+//  ---------------------------------------------
+.box {
+    margin-bottom: $indent-small;
+}
+
+.box-title {
+    margin-bottom: 16px;
+    display: block;
+    @extend .heading-4;
+}
+
+//
+//  Footer
+//  ---------------------------------------------
+.page-footer {
+    position: relative;
+    z-index: 1;
+    color: $text-color;
+    @media(max-width: $screen-lg-min - 1) {
+        padding: 50px 0 0;
+    }
+    @media(min-width: $screen-lg-min) {
+        padding: 70px 0 0;
+    }
+    font-size: 13px;
+    line-height: 14px;
+    background: $footer-background;
+    a {
+        color: $text-color;
+        &:hover {
+            color: $white;
+        }
+    }
+    h4 {
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 400;
+        color: $white;
+        margin-bottom: 22px;
+        text-transform: uppercase;
+        @media(min-width: $screen-md-min) {
+            margin-top: 18px;
+        }
+    }
+    .newsletter .title {
+        margin-bottom: 21px;
+    }
+    .logo-light {
+        margin-bottom: 5px;
+    }
+    .footer-info {
+        font-size: 13px;
+        line-height: 24px;
+    }
+    .social-links {
+        display: block;
+        margin-top: 26px;
+        float: none;
+        clear: none;
+        width: auto;
+        @include clearfix;
+        li {
+            float: left;
+        }
+        li+li {
+            margin-left: 10px;
+        }
+        i {
+            display: block;
+            height: 40px;
+            width: 40px;
+            border-radius: 40px;
+            color: $white;
+            background: #3a3939;
+            text-align: center;
+            transition: $default-transition;
+        }
+        a:hover i {
+            background: $primary;
+        }
+    }
+    .add-info {
+        border-bottom: 1px solid $footer-border-color;
+        @media(min-width: $screen-lg-min) {
+            padding-bottom: 30px;
+            margin-bottom: 60px;
+        }
+        @media(max-width:$screen-lg-min - 1) {
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+        }
+        li {
+            @include make-flex;
+            @media (min-width: $screen-lg-min) {
+                @include justify-content(center);
+            }
+            @include align-items(center);
+            position: relative;
+            margin-bottom: $gutter-width;
+        }
+        h4 {
+            margin-top: 0;
+            @media(max-width: $screen-sm-min - 1) {
+                margin-bottom: 10px;
+                font-size: $default-font-size + 2;
+            }
+            @media(min-width:$screen-lg-min) {
+                margin-bottom: 15px;
+                font-size: $default-font-size + 4;
+            }
+            font-weight: $default-font-weight+200;
+            font-family: inherit;
+        }
+        i {
+            display: inline-block;
+            margin-right: 20px;
+            @media(max-width: $screen-sm-min - 1) {
+                font-size: $default-font-size + 26;
+            }
+            @media(min-width: $screen-sm-min) and (max-width: $screen-lg-min - 1) {
+                font-size: $default-font-size + 36;
+            }
+            @media(min-width:$screen-lg-min) {
+                font-size: $default-font-size + 50;
+            }
+            color: $primary;
+        }
+        .addinfo-text {
+            color: $white;
+            @media(max-width: $screen-sm-min - 1) {
+                font-size: $default-font-size - 2;
+            }
+        }
+    }
+}
+
+.footer-col {
+    .footer-col-content {
+        display: block;
+        ul+ul,
+        li+li {
+            margin-top: 12px;
+        }
+    }
+    .footer.links li {
+        display: list-item;
+    }
+    [class*="store-info_"] {
+        position: relative;
+        padding-left: 24px;
+        line-height: 14px;
+        margin-bottom: 12px;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            color: $primary;
+            margin-top: -8px;
+            font-size: 14px;
+            line-height: 12px;
+        }
+    }
+}
+
+.sm-mobile .footer-col {
+    padding: 16px 0;
+    h4 {
+        @include font-icon('\e926');
+        cursor: pointer;
+        font-size: 20px;
+        position: relative;
+        font-weight: 700;
+        padding-right: 26px;
+        color: $white;
+        margin-bottom: 0;
+        &:before {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 26px;
+            height: 26px;
+            margin-top: -13px;
+            border-radius: 2px;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1;
+            padding: 6px 0;
+            border: 1px solid $white;
+        }
+        &.active:before {
+            content: '\e929';
+        }
+    }
+    .footer-col-content {
+        display: none;
+        margin-top: 24px;
+    }
+}
+
+.contact-info {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 22px;
+    dl {
+        @include make-flex;
+    }
+    dl+dl {
+        margin-top: 17px;
+    }
+    dt {
+        @include make-flex;
+        font-weight: 400;
+        white-space: nowrap;
+    }
+    dd {
+        padding-left: 12px;
+        font-style: normal;
+        a {
+            white-space: nowrap;
+            color: $primary;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+    [class*="icon-"] {
+        color: $white;
+        font-size: 20px;
+        line-height: 22px;
+    }
+}
+
+.footer-panel {
+    background: #161616;
+    position: relative;
+    z-index: 1;
+    padding: 20px 0;
+    margin-top: 64px;
+    .container {
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        width: 100%;
+    }
+    .copyright {
+        color: #7d7d7d;
+        font-size: 13px;
+        line-height: 16px;
+    }
+    .sm-mobile & {
+        .container {
+            @include flex-direction(column);
+            @include justify-content(flex-start);
+            @include align-items(center);
+        }
+    }
+    .list-payment {
+        @include make-flex;
+        @include align-items(center);
+        @include justify-content(center);
+        color: #3a3939;
+        li+li {
+            margin-left: 10px;
+        }
+        span {
+            font-size: 32px;
+            line-height: 32px;
+        }
+    }
+    @media (min-width: $screen-sm-min) {
+        @include make-flex;
+        @include align-items(center);
+        @include justify-content(space-between);
+        text-align: left;
+        *+.list-payment {
+            margin-top: 0;
+        }
+    }
+}
+
+//
+//  To Top Button
+//  ---------------------------------------------
+.scrollToTop {
+    position: fixed;
+    z-index: 999;
+    bottom: 3vh;
+    right: 3vw;
+    height: 40px;
+    width: 40px;
+    display: none;
+    cursor: pointer;
+    text-indent: 100vw;
+    white-space: nowrap;
+    overflow: hidden;
+    &:before {
+        @include font-icon__pseudo('\eab8', $icon-outline);
+        font-size: 30px;
+        line-height: 1;
+        text-indent: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        margin-top: -15px;
+        margin-left: -15px;
+        color: $primary;
+        transition: $default-transition;
+    }
+    &:after {
+        @include font-icon__pseudo('\eab8', $icon-outline);
+        font-size: 30px;
+        line-height: 1;
+        text-indent: 0;
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        margin-top: -14px;
+        margin-left: -14px;
+        color: $white;
+        opacity: .5;
+    }
+    &:hover:before {
+        color: $accent;
+    }
+}
+
+.sm-mobile .scrollToTop {
+    right: 0;
+    bottom: 0;
+    background: $primary;
+    border-top-left-radius: 8px;
+    transition: $default-transition;
+    &:before {
+        color: $white;
+        transition: none;
+    }
+    &:hover {
+        background: $accent;
+    }
+}
+
+//
+//  Helpers
+//  ---------------------------------------------
+.no-display {
+    display: none;
+}
+
+@import "_pages.scss";

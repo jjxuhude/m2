@@ -1,0 +1,13 @@
+{
+  "name": "templatemonster/module-site-maintenance",
+  "type": "magento2-module",
+  "version": "1.0.1",
+  "autoload": {
+    "psr-4": {"TemplateMonster\\SiteMaintenance\\":""},
+    "files": [ "registration.php" ]
+  },
+    "extra": {
+        "isStandalone": "false",
+        "magentoVersion": "v2.1.3"
+    }
+}

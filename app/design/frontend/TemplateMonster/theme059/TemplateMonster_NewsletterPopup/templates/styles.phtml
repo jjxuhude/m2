@@ -1,0 +1,34 @@
+<?php
+/** @var $block TemplateMonster\NewsletterPopup\Block\Styles */
+$helper = $block->getHelper();
+?>
+
+<?php if ($helper->getPopupWidth()): ?>
+.modal-popup.newsletter-popup .modal-inner-wrap {
+    width: <?php echo $helper->getPopupWidth() ?>px;
+}
+<?php endif; ?>
+
+.modal-popup.newsletter-popup .buttons-container button.subscribe {
+    background-color: <?php echo $helper->getButtonColor() ?: '#1979c3' ?>;
+}
+.modal-popup.newsletter-popup .buttons-container button.subscribe:hover {
+    background-color: <?php echo $helper->getButtonHoverColor() ?: '#006bb4' ?>;
+}
+.modal-popup.newsletter-popup .buttons-container button:not(.subscribe) {
+    
+}
+.modal-popup.newsletter-popup .buttons-container button:not(.subscribe):hover {
+    background-color: <?php echo $helper->getButtonHoverColor() ?: '#1979c3' ?>;
+}
+<?php foreach ($helper->getAvailableIcons() as $icon): ?>
+.modal-popup .modal-social .fa-<?php echo $icon ?> {
+    color: <?php echo $helper->getIconColor($icon) ?: '#000' ?>;
+    background-color: <?php echo $helper->getIconBackground($icon) ?: '#fff' ?>;
+}
+.modal-popup .modal-social .fa-<?php echo $icon ?>:hover,
+.modal-popup .modal-social .fa-<?php echo $icon ?>:active {
+    color: <?php echo $helper->getIconHoverColor($icon) ?: '#000' ?>;
+    background-color: <?php echo $helper->getIconBackgroundHover($icon) ?: '#fff' ?>;
+}
+<?php endforeach; ?>

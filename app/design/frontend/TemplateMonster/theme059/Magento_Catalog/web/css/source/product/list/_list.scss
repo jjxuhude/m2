@@ -1,0 +1,103 @@
+
+//
+//  List
+//  ---------------------------------------------
+
+.column.main .products-list{
+    .product-item-info{
+        margin-bottom: $indent-large;
+        @include make-flex();
+        @include make-row();
+        @include flex-wrap(wrap);
+    }
+
+    //Image
+    .product-image-container{
+        font-size: 0;
+    }
+    .product-image-photo{
+        @include make-col();
+        @include flex-basis(100%);
+        text-align: center;
+    }
+
+    //Details
+    .product-item-name{
+        margin-bottom: 4px;
+    }
+
+    .product-item-description{
+        margin-bottom: 8px;
+    }
+
+    .product-item-details{
+        @include make-col();
+        @include flex-basis(100%);
+    }
+
+    .product-item .product-item-actions{
+        &,
+        .actions-secondary{
+            @include justify-content(flex-start);
+        }
+    }
+
+    .product-reviews-summary a.add{
+        display: none;
+    }
+
+    // Actions
+    .actions-primary{
+        .action{
+            height: 40px;
+            padding: 9px;
+
+            @media (max-width: $screen-sm-min - 1){
+                display: block;
+                width: 40px;
+                border-radius: 0;
+            }
+        }
+
+        .action span{
+            display: none;
+
+            @media (min-width: $screen-sm-min){
+                display: inline;
+                font-size: 14px;
+                line-height: 22px;
+                vertical-align: bottom;
+            }
+        }
+    }
+}
+
+@media (min-width: $screen-xs-min){
+    .column.main .products-list{
+        .product-item-info{
+            @include flex-wrap(nowrap);
+        }
+        .product-item-photo{
+            @include flex-basis(42%);
+            margin-bottom: 0;
+        }
+        .product-item-details{
+            @include flex-basis(100%);
+        }
+    }
+}
+
+@media (max-width: $screen-sm-min - 1){
+    .column.main .products-list .product-item-info{
+        margin-left: auto;
+        margin-right: auto;
+
+        .product-item-photo{
+            margin-bottom: 16px;
+        }
+        .product-item-photo,
+        .product-item-photo span{
+            width: 100% !important;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.smtp.grid.container">
+            <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.smtp.grid" as="grid">
+                <arguments>
+                    <argument name="id" xsi:type="string">smtpGrid</argument>
+                    <argument name="dataSource" xsi:type="object">Jjxuhuade\Smtp\Model\ResourceModel\Log\Collection</argument>
+                    <argument name="default_sort" xsi:type="string">id</argument>
+                    <argument name="default_dir" xsi:type="string">DESC</argument>
+                </arguments>
+                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.smtp.grid.columnSet" as="grid.columnSet">
+                    <arguments>
+                        <argument name="rowUrl" xsi:type="array">
+                            <item name="path" xsi:type="string">smtp/log/view</item>
+                            <item name="extraParamsTemplate" xsi:type="array">
+                                <item name="email_id" xsi:type="string">getId</item>
+                            </item>
+                        </argument>
+                    </arguments>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="id">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Email Id</argument>
+                            <argument name="index" xsi:type="string">email_id</argument>
+                            <argument name="type" xsi:type="string">number</argument>
+                            <argument name="column_css_class" xsi:type="string">col-id</argument>
+                            <argument name="header_css_class" xsi:type="string">col-id</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="log_at">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">log_at</argument>
+                            <argument name="index" xsi:type="string">log_at</argument>
+                            <argument name="type" xsi:type="string">datetime</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="email_from">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">email_from</argument>
+                            <argument name="index" xsi:type="string">email_from</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="email_to">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">email_to</argument>
+                            <argument name="index" xsi:type="string">email_to</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="subject">
+                    	<arguments>
+                    		<argument name="header" xsi:type="string" translate="true">subject</argument>
+                    		<argument name="index" xsi:type="string">subject</argument>
+                    	</arguments>
+                    </block>
+                </block>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

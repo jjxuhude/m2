@@ -1,0 +1,20 @@
+@page {
+    size: A4 landscape;
+    margin: 0;
+}
+@media print {
+    html, body {
+        width: 297mm;
+        height: 210mm;
+        margin: 0 auto;
+    }
+    .header-switchers,
+    .greet.welcome,
+    .header.links,
+    .block-search,
+    .minicart-wrapper,
+    .navigation,
+    .page-footer{
+        display: none;
+    }
+}

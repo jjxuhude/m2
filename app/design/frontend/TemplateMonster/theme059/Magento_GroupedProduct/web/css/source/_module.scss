@@ -1,0 +1,86 @@
+.page-product-grouped{
+    .table.grouped{
+        .table-caption{
+            font-size: 18px;
+            line-height: 20px;
+            font-weight: 700;
+            color: $primary;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        th,
+        td{
+            border-left: none;
+        }
+        thead tr{
+            @media (min-width: $screen-sm-min){
+                border-bottom: 1px solid $border-color;
+            }
+        }
+        thead th{
+            border-top: none;
+            border-bottom: none;
+            color: $text-light;
+            font-weight: 700;
+            padding-bottom: 16px;
+            &:first-child{
+                padding-left: 0;
+            }
+            &:last-child{
+                padding-right: 32px;
+                text-align: right;
+            }
+
+            &.qty:after{
+                content: ':';
+            }
+        }
+        tbody tr{
+            color: $text-light;
+            @media (min-width: $screen-sm-min){
+                border-bottom: 1px solid $border-color;
+            }
+
+            .price-box{
+                font-size: 20px;
+                line-height: 20px;
+                margin-bottom: 0;
+            }
+        }
+        tbody td{
+            padding-top: 10px;
+            padding-bottom: 10px;
+            @media (min-width: $screen-sm-min){
+                padding-top: 30px;
+                padding-bottom: 30px;
+            }
+            &:before{
+                border-bottom: none;
+            }
+
+            > * {
+                vertical-align: sub;
+            }
+
+            &:first-child{
+                @media (max-width: $screen-sm-min - 1){
+                    //background: transparent;
+                }
+            }
+        }
+        tbody td.qty{
+            width: 100px;
+            padding-right: 0;
+            input{
+                text-align: center;
+            }
+        }
+        tbody:last-child tr{
+            border-bottom: none;
+        }
+        tbody td:first-child{
+            padding-left: 0;
+        }
+    }
+}

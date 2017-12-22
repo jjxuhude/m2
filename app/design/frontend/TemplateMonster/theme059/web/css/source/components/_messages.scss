@@ -1,0 +1,62 @@
+.page-main > .page.messages .messages{
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+
+    .message{
+        padding: 12px 16px;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 4px;
+    }
+
+    .message:not(.notice):not(.info){
+        position: relative;
+        cursor: pointer;
+        padding-bottom: 20px;
+
+        > div:after{
+            content: 'Tap to close';
+            position: absolute;
+            bottom: 7px;
+            right: 0;
+            left: 0;
+            font-size: 10px;
+            line-height: 1;
+            color: $text-dark;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.page-main > .columns .column.main > .message{
+    padding: 12px 16px;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 4px;
+}
+
+.message-info,
+.message-notice,
+.message.notice,
+.message.info{
+    color: #0088d2;
+    background-color: lighten(desaturate(adjust_hue(#0088d2, -1.1428571428571104), 32.25806451612904%), 52.74509803921569%);
+    border: none;
+}
+.message-warning{
+    color: #8a6d3b;
+    background-color: lighten(saturate(adjust_hue(#8a6d3b, 12.425316455696176), 40.54363844768306%), 55.294117647058826%);
+}
+.message-error{
+    color: $denied;
+    background-color: lighten(saturate(adjust_hue($denied, 0), 0%), 30.000000000000014%);
+}
+.message-success{
+    color: $allow;
+    background-color: lighten(desaturate(adjust_hue($allow, 1.9491525423729996), 7.142857142857068%), 48.23529411764705%);
+}

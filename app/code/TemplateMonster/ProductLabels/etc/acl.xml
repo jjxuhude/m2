@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="TemplateMonster_ProductLabels::config_productlabel" title="Compare Ajax" sortOrder="80" />
+                        </resource>
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::content">
+                    <resource id="TemplateMonster_ProductLabels::productlabels" title="Smart Labels Product" sortOrder="30">
+                        <resource id="TemplateMonster_ProductLabels::productlabels_grid"
+                                  title="Smart Labels Product Grid" sortOrder="10"/>
+                        <resource id="TemplateMonster_ProductLabels::productlabels_save"
+                                  title="Smart Labels Product Save" sortOrder="20"/>
+                        <resource id="TemplateMonster_ProductLabels::productlabels_edit"
+                                  title="Smart Labels Product Edit" sortOrder="30"/>
+                        <resource id="TemplateMonster_ProductLabels::productlabels_remove"
+                                  title="Smart Labels Product Remove" sortOrder="40"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

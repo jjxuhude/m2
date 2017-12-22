@@ -1,0 +1,265 @@
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.swatch-opt {
+    padding: 20px 0;
+}
+
+.swatch-attribute-label {
+    font-weight: 700;
+    position: relative;
+    &.required {
+        padding-right: 10px;
+    }
+    &[data-required="1"]:after {
+        content: '*';
+        color: red;
+        position: absolute;
+        right: -11px;
+        top: -2px;
+        font-weight: bold;
+        font-size: 1em;
+    }
+}
+
+.swatch-attribute-selected-option {
+    color: $unactive;
+    padding-left: 17px;
+}
+
+.swatch-attribute [class*="swatch-opt"] .swatch-option,
+[class*="swatch-opt"] .swatch-attribute .swatch-option{
+    min-width: 40px;
+    height: auto;
+    margin: 0 0 10px 0;
+    float: none;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    border-radius: 4px;
+    outline: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: $default-transition;
+
+    &.text {
+        background: $bg-dark;
+        border: 1px solid $border-color;
+        color: $default;
+        line-height: 20px;
+        padding: 9px 5px;
+        min-width: 40px;
+        margin-right: 0;
+
+        &.selected,
+        &:not(.disabled):hover{
+            background: $white;
+            outline: none;
+        }
+    }
+
+    &.color {
+        min-height: 40px;
+        border: 0 solid $border-color;
+
+        &[option-tooltip-value="#ffffff"]{
+            border-width: 1px;
+
+            &.selected,
+            &:not(.disabled):hover{
+                border: 4px solid $border-color;
+                border-radius: 7px;
+                outline: none;
+            }
+        }
+
+        &.selected,
+        &:not(.disabled):hover{
+            border: 4px solid $border-color;
+            border-radius: 7px;
+            outline: none;
+        }
+    }
+
+    .disabled {
+        cursor: default;
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: $bg-dark;
+            opacity: .5;
+        }
+    }
+}
+
+body .swatch-option-tooltip {
+    visibility: hidden;
+    display: none;
+
+    @media (min-width: $screen-mob-min) {
+        max-width: 140px;
+        max-height: 100%;
+        min-height: 20px;
+        min-width: 40px;
+        position: absolute;
+        padding: 5px;
+        background: #fff;
+        color: rgb(148, 148, 148);
+        border: 1px solid #adadad;
+        display: none;
+        visibility: visible;
+        z-index: 999;
+        text-align: center;
+    }
+}
+
+body  .swatch-option-tooltip,
+body .swatch-option-tooltip-layered{
+    .corner {
+        position: absolute;
+        top: calc(100% - 1px);
+        height: 8px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7px 7px 0 7px;
+            border-color: #fff transparent transparent transparent;
+            font-size: 0;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 8px 0 8px;
+            border-color: #adadad transparent transparent transparent;
+            font-size: 0;
+        }
+    }
+}
+
+body .swatch-option-tooltip .image,
+body .swatch-option-tooltip-layered .image {
+    display: block;
+    height: 130px;
+    width: 130px;
+    margin: 0 auto;
+}
+
+body .swatch-option-tooltip .title {
+    max-width: 140px;
+    min-height: 20px;
+    max-height: 200px;
+    color: rgb(40, 40, 40);
+    text-align: center;
+    display: block;
+    overflow: hidden;
+}
+
+.swatch-more {
+    display: inline-block;
+    margin: 2px 0;
+    text-decoration: none !important;
+    position: static;
+    z-index: 1;
+}
+
+/* Layered Features */
+.swatch-attribute-options{
+    margin-left: -3px;
+    margin-top: 0;
+
+    .swatch-option-link-layered{
+        margin-left: 3px !important;
+    }
+}
+
+body .swatch-option-tooltip-layered {
+    width: 140px;
+    position: absolute;
+    background: #fff;
+    color: rgb(148, 148, 148);
+    border: 1px solid #adadad;
+    display: none;
+    z-index: 999;
+    left: -47px;
+}
+
+body .swatch-visual-tooltip-layered {
+    height: 160px;
+    top: -170px;
+}
+
+body .swatch-textual-tooltip-layered {
+    height: 30px;
+    top: -40px;
+}
+
+body .swatch-option-link-layered:hover > .swatch-option-tooltip-layered {
+    display: block;
+}
+
+.swatch-attribute-options{
+    @include make-flex;
+    @include flex-wrap(wrap);
+}
+
+.swatch-attribute-options .swatch-option-tooltip-layered .title {
+    width: 100%;
+    height: 20px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    color: rgb(40, 40, 40);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.swatch-option-disabled:after {
+    content: '';
+    position: absolute;
+    width: 42px;
+    height: 2px;
+    background: red;
+    transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -webkit-transform: rotate(-30deg);
+    z-index: 995;
+    left: -4px;
+    top: 10px;
+}
+
+.swatch-option-disabled {
+    outline: none !important;
+    cursor: default;
+    border: 0;
+}
+
+/* Bugfix for Add To Cart button */
+div[class^="swatch-opt-"] {
+    margin-top: 10px;
+}
+
+.swatch-option-loading {
+    content: url("../images/loader-2.gif");
+}
+

@@ -1,0 +1,157 @@
+body:not(.cms-index-index) .column.main .block.newsletter {
+    display: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.column.main .block.newsletter {
+    position: relative;
+    z-index: 2;
+    background: $primary;
+    .heading-4 strong {
+        font-weight: 600;
+    }
+    .content {
+        @media(min-width: $screen-lg-min) {
+            padding: 39px 80px;
+        }
+        @media(max-width: $screen-lg-min - 1) {
+            padding: 20px;
+        }
+    }
+    .field {
+        @include make-flex;
+        @include justify-content(flex-start);
+        @include align-items(center);
+        padding: 0;
+        margin-bottom: 0;
+        position: relative;
+        @media(max-width: $screen-lg-min - 1) {
+            @include flex-wrap(wrap);
+        }
+    }
+    #newsletter,
+    input {
+        margin-bottom: 0;
+    }
+    #newsletter-error {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 0 4px;
+        background: $white;
+    }
+    .field.newsletter label {
+        line-height: 1.5;
+    }
+    .control {
+        @include flex-basis(100%);
+        position: relative;
+        margin-left: auto;
+        @media (min-width: $screen-lg-min) {
+            @include flex-basis(55.44%);
+        }
+        &-newsletter-wrap {
+            position: relative;
+            &:before {
+                color: $primary;
+                content: '\e61c';
+                position: absolute;
+                top: 50%;
+                left: 21px;
+                margin-top: 0;
+                transform: translateY(-50%);
+                font-size: 16px;
+                font-family: "iconfont";
+                pointer-events: none;
+            }
+        }
+        input#newsletter {
+            height: 50px;
+            padding-left: 46px;
+            padding-right: 143px;
+            color: $accent;
+            background-color: $white;
+            border-color: $border-color;
+            transition: .3s all ease;
+            &:focus {
+                border-color: $white;
+            }
+            &::-webkit-input-placeholder {
+                color: $default;
+            }
+            &::-moz-placeholder {
+                color: $default;
+            }
+            &:-ms-input-placeholder {
+                color: $default;
+            }
+            &:-moz-placeholder {
+                color: $default;
+            }
+            @media (min-width: $screen-xs-min) {
+                padding-right: 150px;
+            }
+        }
+        .actions {
+            position: absolute;
+            top: 0;
+            right: 6px;
+            bottom: 0;
+            margin: auto;
+            text-align: center;
+            will-change: content;
+            height: 37px;
+            button.action.primary {
+                height: 100%;
+                border: none;
+                color: $white;
+                font-size: $default-font-size - 1;
+                background: $accent;
+                padding: 8px 15px;
+                text-transform: uppercase;
+                letter-spacing: .06em;
+                font-weight: 400;
+                &:hover,
+                &:focus {
+                    background: $primary;
+                }
+            }
+        }
+    }
+    .subtitle {
+        @include flex-basis(18.5%);
+        font-size: 20px;
+        line-height: 25px;
+        font-weight: 700;
+        color: $white;
+        text-transform: uppercase;
+    }
+    .label {
+        @include flex-basis(22.73%);
+        font-size: 14px;
+        line-height: 24px;
+        color: $white;
+    }
+    .subtitle,
+    .label {
+        display: inline-block;
+        @media(max-width: $screen-lg-min - 1) {
+            @include flex-basis(50%);
+            width: 50%;
+            margin-bottom: 12px;
+        }
+        @media(max-width: $screen-md-min - 1) {
+            text-align: center;
+            width: 100%;
+            @include flex-basis(100%);
+        }
+    }
+    .label {
+        @media(max-width: $screen-md-min - 1) {
+            margin-bottom: 8px;
+        }
+    }
+}

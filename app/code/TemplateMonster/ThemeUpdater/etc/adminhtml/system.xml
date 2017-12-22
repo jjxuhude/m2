@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="templatemonster" translate="label" sortOrder="1000">
+            <label>TemplateMonster</label>
+        </tab>
+        <section id="themeupdater" translate="label" type="text" sortOrder="999"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Updater</label>
+            <tab>templatemonster</tab>
+            <resource>TemplateMonster_ThemeUpdater::system_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+
+                <field id="update_warning" translate="label comment" type="label" sortOrder="10" showInDefault="1"
+                    showInWebsite="1" showInStore="1">
+                    <comment>Installing theme update will replace your theme files and may override your file changes.
+                        Please create theme backup before proceed.</comment>
+                    <frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\UpdateWarning</frontend_model>
+                </field>
+
+                <field id="template_id" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                showInWebsite="1" showInStore="1">
+                    <label>Template ID</label>
+                    <comment>Template ID can be found in the template order email or from your
+                        TemplateMonster account.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="order_id" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Order ID</label>
+                    <comment>Order ID can be found in the template order email or from your
+                        TemplateMonster account.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="version" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Version</label>
+                    <comment>Current theme version.</comment>
+                    <frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\ThemeVersion</frontend_model>
+                </field>
+
+                <!--<field id="frequency" translate="label comment" type="text" sortOrder="35" showInDefault="1"-->
+                       <!--showInWebsite="1" showInStore="1">-->
+                    <!--<label>Frequency</label>-->
+                    <!--<comment>Set how often system will check for theme updates. (seconds)</comment>-->
+                <!--</field>-->
+
+                <field id="check_updates" translate="label comment" type="button" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\CheckUpdates</frontend_model>
+                </field>
+
+                <field id="download" translate="label comment" type="button" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\Download</frontend_model>
+                </field>
+
+                <field id="backup" translate="label comment" type="button" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\Backup</frontend_model>
+                    <comment>Theme backups are stored in "pub/media/theme_backups" directory</comment>
+                </field>
+
+                <!--<field id="download" translate="label comment" type="button" sortOrder="40" showInDefault="1"-->
+                       <!--showInWebsite="1" showInStore="0">-->
+                    <!--<frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\Download</frontend_model>-->
+                    <!--<label></label>-->
+                <!--</field>-->
+
+                <!--<field id="active_theme" translate="label comment" type="label" sortOrder="90" showInDefault="1"-->
+                       <!--showInWebsite="1" showInStore="1">-->
+                    <!--<label>Active Theme</label>-->
+                    <!--<comment></comment>-->
+                    <!--<frontend_model>TemplateMonster\ThemeUpdater\Block\Adminhtml\System\Config\Field\ActiveTheme</frontend_model>-->
+                <!--</field>-->
+
+                <!--<field id="theme" translate="label comment" type="select" sortOrder="20"-->
+                       <!--showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<label>Theme</label>-->
+                    <!--<comment>Please select theme to update.</comment>-->
+                    <!--<source_model>TemplateMonster\ThemeUpdater\Model\Config\Source\Themes</source_model>-->
+                <!--</field>-->
+            </group>
+        </section>
+    </system>
+</config>

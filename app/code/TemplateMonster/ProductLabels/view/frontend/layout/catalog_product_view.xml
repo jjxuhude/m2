@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="Magento\Framework\View\Element\Template" name="product.labels.styles"
+                   before="-"
+                   template="TemplateMonster_ProductLabels::product-label-styles.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="product.info.media">
+           <block class="Magento\Framework\View\Element\Template" name="product.labels"
+                  before="-"
+                  ifconfig="productlabel/config/active"
+                  template="TemplateMonster_ProductLabels::product-labels.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

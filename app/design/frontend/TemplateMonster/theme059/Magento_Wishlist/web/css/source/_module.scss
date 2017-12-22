@@ -1,0 +1,370 @@
+//
+//  Wishlist sidebar
+//  ---------------------------------------------
+
+.block-wishlist{
+    .wishlist-counter{
+        margin-bottom: 16px;
+
+        span{
+            font-weight: 700;
+            color: $primary;
+        }
+    }
+    .subtitle{
+        font-size: 1.15em;
+        font-weight: 700;
+        color: $text-light;
+        margin-bottom: 24px;
+        display: inline-block;
+    }
+
+    .product-item{
+        display: block;
+        margin-bottom: 30px;
+    }
+    .product-item-info{
+        @include make-flex;
+        @include flex-wrap(wrap);
+
+        @media (min-width: $screen-xl-min){
+            @include flex-wrap(nowrap);
+        }
+    }
+
+    //Image
+    .product-image-container{
+        display: inline-block;
+        max-width: 100%;
+        background: $bg-light;
+    }
+    .product-image-wrapper{
+        height: 0;
+        display: block;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+    .product-image-photo{
+        text-align: center;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .product-item-details{
+        overflow: hidden;
+        padding: 0 0 0 16px;
+        position: relative;
+        @include flex-basis(100%);
+        @include flex-grow(2);
+
+        @media (min-width: $screen-xl-min){
+            @include flex-basis(auto);
+        }
+    }
+    .product-item-name{
+        display: block;
+        font-size: 14px;
+        line-height: 23px;
+        margin-bottom: 12px;
+        padding-right: 24px;
+
+        a{
+            color: $text-light;
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
+    .price-box{
+        @include price-box;
+    }
+    .price-as-configured .price-final_price{
+        display: none;
+    }
+    .product-item-actions{
+        .tocart span{
+            display: none;
+        }
+        button.action{
+            padding: 0;
+            border-radius: 0;
+            &:before{
+                display: inline-block;
+                width: 40px;
+                font-size: 23px;
+                line-height: 40px;
+                vertical-align: baseline;
+            }
+        }
+    }
+    .empty{
+        margin-top: 16px;
+    }
+
+    .actions-secondary{
+        position: absolute;
+        top: -2px;
+        right: 0;
+
+        .btn-remove {
+            font-size: 16px;
+        }
+    }
+
+    .actions-toolbar a.details{
+        @include button-block;
+        width: 100%;
+        text-align: center;
+        padding: 14px 33px;
+
+        @media (min-width: $screen-xs-min) and (max-width: $screen-md-min - 1){
+            width: auto;
+        }
+    }
+}
+
+//
+//  Wishlist page
+//  ---------------------------------------------
+
+.products-grid.wishlist{
+    // Name
+    .product-item-name{
+        display: block;
+    }
+
+    // Price
+    .price-as-configured span[data-price-amount="0"]{
+        display: none;
+    }
+
+    .product-item-inner{
+        text-align: left;
+    }
+
+    // Options
+    .product-item-tooltip{
+        .subtitle,
+        .ui-dialog-buttonpane{
+            display: none;
+        }
+        .toggle{
+            cursor: pointer;
+            color: $text-light;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        dl{
+            @include make-flex;
+            @include justify-content(space-around);
+            @include align-items(stretch);
+            @include flex-wrap(wrap);
+
+            dt, dd{
+                @include flex-basis(50%);
+            }
+            dt{
+                text-align: right;
+                padding-right: 8px;
+            }
+            dd{
+                text-align: left;
+                padding-left: 8px;
+            }
+        }
+    }
+
+    // Comment
+    .comment-box label{
+        color: $text-dark;
+        font-weight: 700;
+        margin-bottom: 4px;
+        display: inline-block;
+    }
+    textarea{
+        min-height: 105px;
+    }
+
+    // Product`s action
+    .box-tocart{
+        margin-bottom: 10px;
+        .fieldset{
+            width: 100%;
+
+            .label{
+                width: 100%;
+                color: $text-light;
+                font-weight: 700;
+                margin-bottom: 4px;
+                display: inline-block;
+            }
+            .wishlist_box-tocart__wrapper{
+                @include make-flex;
+                @include justify-content(flex-start);
+                @include align-items(flex-start);
+                @include flex-direction(column);
+
+                @media (min-width: $screen-xl-min){
+                    @include justify-content(space-between);
+                    @include align-items(stretch);
+                    @include flex-direction(row);
+                }
+            }
+            .field.qty{
+                @include flex-basis(auto);
+                padding: 0;
+                width: 100%;
+
+                @media (min-width: $screen-sm-min){
+                    width: auto;
+                }
+
+                @media (min-width: $screen-xl-min){
+                    @include flex-basis(40%);
+                }
+
+                .control,
+                input{
+                    height: 100%;
+                    text-align: center;
+                }
+            }
+            .product-item-actions{
+                @include flex-basis(auto);
+                @include make-flex;
+                @include justify-content(flex-start);
+                margin-top: 12px;
+
+                @media (min-width: $screen-xl-min){
+                    @include flex-basis(60%);
+                    @include justify-content(flex-end);
+                    margin-top: 0;
+                }
+            }
+        }
+        .unavailable.stock{
+            margin: 7px 3px 6px 8px;
+        }
+    }
+    .product-item-actions{
+        display: block;
+        margin: 0;
+        padding-top: 1px;
+        .actions-primary{
+            margin: 0;
+        }
+    }
+
+    @media (max-width: $screen-sm-min - 1){
+        .product-item-inner{
+            position: relative;
+
+            > .product-item-actions{
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                @include make-flex;
+
+                .action{
+                    background-color: transparent;
+                    font-size: 14px;
+                    line-height: 48px;
+                    color: $text-lightest;
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    border: 1px solid $bg-dark;
+                    background: $bg-dark;
+                    text-align: center;
+                    &:hover{
+                        color: $primary;
+                        background: $white;
+                        border-color: #dedede;
+                    }
+
+                    + .action{
+                        margin-left: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    a.action{
+        &.edit,
+        &.delete{
+            font-size: 14px;
+            line-height: 1;
+            color: $text-lightest;
+            &:hover{
+                color: $primary;
+            }
+        }
+
+        + a.action{
+            margin-left: 30px;
+        }
+    }
+}
+
+.form-wishlist-items .actions-toolbar{
+    margin-top: 10px;
+    padding-top: 40px;
+    border-top: 1px solid $border-color;
+    @include make-flex;
+    @include flex-direction(column);
+    @include justify-content(space-between);
+    @include align-items(flex-start);
+
+    @media (min-width: $screen-sm-min) {
+        @include flex-direction(row-reverse);
+        @include justify-content(space-between);
+        @include align-items(center);
+    }
+
+    .primary{
+        @include make-flex;
+        @include flex-direction(column-reverse);
+        @include align-items(flex-start);
+        margin-bottom: 10px;
+
+        @media (min-width: $screen-sm-min) {
+            @include flex-direction(row);
+            @include align-items(stretch);
+            margin-bottom: 0;
+        }
+
+        .action{
+            display: block;
+
+            +.action{
+                margin-bottom: 10px;
+                margin-left: 0;
+
+                @media (min-width: $screen-sm-min) {
+                    margin-bottom: 0;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    .update{
+        @include font-icon('\e92d');
+    }
+    .share{
+        @include font-icon('\eaa0');
+    }
+    .tocart{
+        @include button-block__primary;
+    }
+
+}

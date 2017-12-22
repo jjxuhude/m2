@@ -1,0 +1,228 @@
+/*
+* TM_Newsletter-popup
+*/
+
+// Main Styles
+.newsletter-popup.modal-popup {
+    // Modal
+    .modal-inner-wrap {
+        margin-top: 7%;
+        padding: 0;
+        margin-right: 15vw;
+        margin-left: 15vw;
+        background: $primary;
+        color: $white;
+        @media screen and (max-width: $screen-sm-min - 1) {
+            width: auto !important;
+        }
+        @media (min-width: $screen-sm-min) {
+            margin-top: 12%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+    .actions {
+        display: none;
+    }
+    // Header
+    header.modal-header {
+        padding: 25px 10px 0;
+        @media (min-width: $screen-sm-min) {
+            padding-top: 45px;
+        }
+        .action-close {
+            padding: 10px;
+            top: 0;
+            right: 0;
+            &:before {
+                display: block;
+                font-size: 22px;
+                line-height: 1;
+                transition: $default-transition;
+            }
+            &:hover:before {
+                color: $accent;
+            }
+            @media (min-width: $screen-lg-min) {
+                padding: 15px 17px;
+            }
+        }
+        h1.modal-title {
+            color: $white;
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: 700;
+            border-bottom: none;
+            padding: 0;
+            margin-bottom: 0;
+            text-align: center;
+            text-transform: uppercase;
+            @media (min-width: $screen-sm-min) {
+                font-size: 30px;
+                line-height: 34px;
+            }
+        }
+    }
+    // Content
+    .modal-content {
+        padding: 5px 20px 0;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        @media (min-width: $screen-sm-min) {
+            padding-top: 17px;
+            padding-right: 50px;
+            padding-left: 50px;
+        }
+        .content-text {
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: 700;
+            @media (min-width: $screen-sm-min) {
+                font-size: 30px;
+                line-height: 34px;
+            }
+            strong {
+                display: inline-block;
+                width: 100%;
+                font-size: 16px;
+                line-height: 20px;
+                @media (min-width: $screen-sm-min) {
+                    font-size: 60px;
+                    line-height: 54px;
+                    margin-bottom: 18px;
+                }
+            }
+            p {
+                margin-bottom: 0;
+            }
+        }
+        .block.newsletter {
+            margin: 0;
+            width: calc(100% - 125px);
+            @media (max-width: $screen-xs-min - 1) {
+                width: calc(100% - 60px);
+            }
+            .field {
+                padding-top: 14px;
+                padding-bottom: 0;
+                @media (min-width: $screen-sm-min) {
+                    padding-top: 34px;
+                }
+                input {
+                    color: $default;
+                    border: none;
+                    font-size: 13px;
+                    line-height: 16px;
+                    padding: 12px 8px;
+                    @media (min-width: $screen-lg-min) {
+                        padding-left: 40px;
+                    }
+                }
+                div.mage-error {
+                    position: absolute;
+                    bottom: -16px;
+                    left: 0;
+                }
+                .control {
+                    @media (min-width: $screen-lg-min) {
+                        position: relative;
+                        &:before {
+                            @include font-icon__pseudo('\e61c', $iconfont);
+                            color: $accent;
+                            font-size: 16px;
+                            line-height: 16px;
+                            position: absolute;
+                            z-index: 9;
+                            top: 50%;
+                            left: 15px;
+                            margin-top: -8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Footer
+    footer.modal-footer {
+        padding: 0;
+        .modal-social {
+            padding: 14px 10px;
+            @include make-flex;
+            @include justify-content(center);
+            @include align-items(center);
+            @include flex-wrap(wrap);
+            @media(min-width: $screen-sm-min) {
+                padding: 40px 10px 43px;
+            }
+            a {
+                @include button-block;
+                margin-bottom: 5px;
+                padding: 0;
+                font-size: 15px;
+                line-height: 40px;
+                text-align: center;
+                width: 40px;
+                border-radius: 40px;
+                &:hover {
+                    color: $primary;
+                    background: $white;
+                }
+                @media(min-width: $screen-lg-min) {
+                    padding: 0;
+                }
+                &.icon-twitter:before {
+                    content: '\e67c';
+                }
+                &.icon-google:before {
+                    content: '\e785';
+                }
+                +a {
+                    margin-left: 10px;
+                }
+            }
+             :link,
+             :hover {
+                text-decoration: none;
+            }
+        }
+    }
+    // Buttons block
+    .buttons-container {
+        padding: 0;
+        position: absolute;
+        z-index: 9;
+        right: 20px;
+        bottom: 0;
+        background: $white;
+        @media (min-width: $screen-sm-min) {
+            right: 50px;
+        }
+        button {
+            @include button-block;
+            padding: 12px 23px;
+            box-shadow: none;
+            font-size: 14px;
+            line-height: 16px;
+            text-transform: uppercase;
+            &.subscribe {
+                &:hover {
+                    color: $primary;
+                }
+                @media (max-width: $screen-xs-min - 1) {
+                    @include font-icon('\e0be', $material-icons);
+                    padding: 10px 23px;
+                    span {
+                        display: none;
+                    }
+                }
+            }
+            &:not(.subscribe) {
+                display: none;
+            }
+            @media (min-width: $screen-lg-min) {
+                padding: 12px 23px;
+            }
+        }
+    }
+}

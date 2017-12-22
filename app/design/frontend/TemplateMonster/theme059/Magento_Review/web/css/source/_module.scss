@@ -1,0 +1,232 @@
+//
+//  Rating summary
+//  ---------------------------------------------------
+
+.rating-summary{
+    @include make-flex();
+    .label{
+        margin-right: $indent-small;
+    }
+    .rating-result__stars{
+        span[class^="rating-star__"]{
+            color: $review-star;
+            display: inline-block;
+            font-size: 14px;
+            line-height: 1;
+            padding: 0 2px;
+            position: relative;
+            vertical-align: middle;
+            &:before,
+            &:after{
+                font-family: $material-icons;
+                font-size: 14px;
+                line-height: 1;
+            }
+            &:before{
+                content: '\e83a';
+                font-family: $material-icons;
+                color: #b6c5d7;
+            }
+            &:after{
+                color: $review-star;
+                position: absolute;
+                top: 0;
+                left: 2px;
+            }
+
+            &.rating-star__full:after{
+                content: '\e838';
+            }
+            &.rating-star__half:after{
+                content: '\e839';
+            }
+        }
+    }
+    .rating-result__text{
+        display: none;
+    }
+}
+.items.review-items .rating-result__stars{
+    padding-top: 3px;
+}
+
+//
+//  Review List
+//  ---------------------------------------------------
+
+.review-list{
+    .block-title{
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        color: $primary;
+        margin-bottom: 32px;
+    }
+
+    .review-title{
+        font-size: 16px;
+        line-height: 18px;
+        color: $text-light;
+        font-weight: 700;
+        margin-bottom: 4px;
+    }
+
+    .review-item{
+        margin-bottom: 30px;
+    }
+
+    //Rating
+    .review-ratings{
+        margin-bottom: 8px;
+    }
+    .rating-summary{
+        @include make-flex();
+    }
+    .rating-label{
+        margin-right: 24px;
+    }
+    .rating-result{
+        display: inline-block;
+    }
+
+
+    //Details
+    .review-details{
+        @include make-flex;
+
+        p + p{
+            margin-left: 4px;
+        }
+        p > * {
+            display: inline-block;
+        }
+
+        .review-author .review-details-value{
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+}
+
+//
+//  Review Form
+//  ---------------------------------------------------
+
+.review-add{
+    .block-title{
+        font-size: 18px;
+        line-height: 20px;
+        font-weight: 700;
+        color: $primary;
+        margin-bottom: 32px;
+    }
+    .review-legend{
+        padding: 12px 24px;
+        background: $bg-dark;
+        font-size: 16px;
+        line-height: 18px;
+        margin-bottom: 32px;
+        width: 100%;;
+
+        span{
+            font-weight: 700;
+            margin-right: 4px;
+            color: $text-light;
+        }
+    }
+
+    .field[class*=review-field]:not(.review-field-ratings):not(.review-field-rating){
+        margin-bottom: 8px;
+        &:last-child{
+            margin-bottom: 24px;
+        }
+    }
+
+    .review-field-text textarea{
+        min-height: 100px;
+        @media (min-width: $screen-sm-min){
+            min-height: 200px;
+        }
+    }
+}
+
+.review-field-ratings{
+    margin-bottom: 4px;
+    @include clearfix;
+
+    > .label,
+    > .control{
+        float: left;
+    }
+
+    .field{
+        padding: 0;
+    }
+
+    > .label{
+        color: $text-light;
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 700;
+        margin-right: 24px;
+    }
+
+    [id="Rating_rating_label"]{
+        display: none;
+    }
+}
+.control.review-control-vote{
+    display: inline-block;
+    label[class^='rating-']{
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 0;
+        //Star rating
+        .rating-star {
+            color: $text-lightest;
+            display: inline-block;
+            padding: 0 4px;
+            @include font-icon("\ea85");
+        }
+        &.fill .rating-star{
+            color: $review-star;
+        }
+    }
+
+    .radio{
+        display: none;
+    }
+}
+
+// Customer reviews history
+//-----------------------------------
+.my-reviews-table__wrapper{
+    .table-title{
+        @extend .heading-3;
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .pager{
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        margin-bottom: 20px;
+
+        .toolbar-amount,
+        .limiter{
+            @include flex-basis(auto);
+        }
+
+        .field{
+            padding: 0;
+        }
+    }
+
+    .table-wrapper.reviews{
+        margin-bottom: 26px;
+        caption{
+            display: none;
+        }
+    }
+}

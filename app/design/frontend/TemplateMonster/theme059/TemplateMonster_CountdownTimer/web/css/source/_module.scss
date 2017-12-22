@@ -1,0 +1,16 @@
+
+.timer-wrapper{
+    border: none;
+    background: $primary;
+    color: $white;
+    border-radius: 4px;
+    font-weight: 700;
+    max-width: 300px;
+    padding: 12px 8px;
+    margin: 15px 0;
+    font-size: 14px;
+    line-height: 16px;
+    @include make-flex;
+    @include justify-content(center);
+    @include align-items(center);
+}

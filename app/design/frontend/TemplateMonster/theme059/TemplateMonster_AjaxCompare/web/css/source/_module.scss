@@ -1,0 +1,43 @@
+
+// Main Styles
+
+.modals-wrapper .modal-popup.compare-popup {
+    &._show {
+        -webkit-overflow-scrolling: touch;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .modal-inner-wrap {
+        overflow: hidden;
+        box-sizing: border-box;
+        height: auto;
+        max-height: 90vh;
+        margin-top: 5vh;
+        min-height: 600px;
+        width: 90%;
+
+        @media (min-width: $screen-sm-min) {
+            width: 75%;
+        }
+    }
+
+    &._inner-scroll .modal-content {
+        margin-right: -40px;
+        padding-right: 40px;
+    }
+
+    .modal-footer {
+        display: block;
+        min-height: 70px !important;
+
+        button{
+            @include button-block;
+            @include button-block__primary;
+        }
+    }
+
+    .table tr td{
+        border-left: 1px solid $border-color;
+    }
+}
+

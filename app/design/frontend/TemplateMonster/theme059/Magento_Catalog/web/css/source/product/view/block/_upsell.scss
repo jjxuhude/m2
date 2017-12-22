@@ -1,0 +1,36 @@
+//
+//  Upsell products
+//  ---------------------------------------------
+
+.block.upsell{
+    @include order(4);
+    @include make-col();
+    @include flex-basis(100%);
+    overflow: hidden;
+
+    .block-actions button.action.select {
+        color: $primary;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.products-grid.products-upsell{
+    margin: 2rem 0 0;
+    padding: 0;
+
+    .product-items{
+        margin: 0 -15px;
+        padding: 0;
+    }
+    .product-item{
+        @include flex-basis(100%);
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .owl-item{
+         padding: 0 15px;
+    }
+}

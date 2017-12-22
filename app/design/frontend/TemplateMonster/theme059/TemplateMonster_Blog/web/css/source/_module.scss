@@ -1,0 +1,142 @@
+@import '_variables.scss';
+@import '_blog-listing.scss';
+@import '_blog-widget.scss';
+@import '_blog-post.scss';
+@import '_blog-comments.scss';
+@import '_blog-related-posts.scss';
+@import '_blog-sidebar.scss';
+
+
+.posts-list-wrapper .toolbar-top .toolbar-posts{
+    @include make-flex;
+    @include justify-content(space-between);
+
+    .limiter{
+        @include make-flex;
+        @include justify-content(space-between);
+        margin-bottom: 0;
+
+        @media (min-width: $screen-sm-min){
+            @include order(2);
+        }
+    }
+
+
+    .sorter{
+        @include make-flex;
+        @include justify-content(space-between);
+        margin-bottom: 0;
+
+        @media (min-width: $screen-sm-min){
+            @include order(1);
+        }
+
+        .sorter-label{
+            padding-right: $indent-small;
+        }
+    }
+
+    .control{
+        text-align: center;
+    }
+}
+
+.block-posts-list .post-items{
+    .post-title a{
+        color: $text-light;
+        font-size: 22px;
+        line-height: 34px;
+        font-weight: 700;
+        &:hover{
+            color: $primary;
+        }
+    }
+    a.post-link{
+        color: $default;
+        text-transform: capitalize;
+        &:hover{
+            color: $primary;
+        }
+    }
+    .post-data{
+        @include make-flex;
+        @include justify-content(space-between);
+        time{
+            display: inline-block;
+        }
+
+        .post-comments a{
+            color: $default;
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
+}
+
+.post-page{
+    .post-text{
+        img{
+            margin-bottom: 1rem;
+        }
+    }
+    .post-data{
+        @include make-flex;
+        @include justify-content(space-between);
+        @include flex-wrap(wrap);
+        time{
+            display: inline-block;
+        }
+
+        .post-comments a{
+            color: $default;
+            &:hover{
+                color: $primary;
+            }
+        }
+    }
+
+    .post-comments-block{
+        .post-comments-title{
+            font-size: 22px;
+            line-height: 26px;
+            font-weight: 700;
+            color: $text-light;
+        }
+
+        .comment-add .post-comments-title{
+            font-size: 18px;
+            line-height: 22px;
+            color: $primary;
+        }
+
+        .post-comment{
+            background-color: transparent;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+
+            @media (min-width: $screen-sm-min){
+                padding: 24px 30px;
+            }
+        }
+        .comment-info{
+            @include make-flex;
+            @include justify-content(flex-start);
+            border-bottom: none;
+
+            div{
+                float: none;
+            }
+            h3{
+                margin: 0 2em 0 0;
+                @include order(1);
+            }
+            span{
+                line-height: 2rem;
+            }
+            .post-data{
+                @include order(2);
+            }
+        }
+    }
+}

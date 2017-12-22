@@ -1,0 +1,23 @@
+<?php /** @var $block \TemplateMonster\QuickView\Block\Styles */ ?>
+<style type="text/css">
+    .quick-view-button {
+        float: right;
+        padding: 3px 7px!important;
+        font-size: 1.1rem!important;
+        margin-bottom: 10px;
+    }
+    .modal-popup.quick-view._show {
+        pointer-events: none;
+    }
+    <?php if ($block->getWindowWidth()): ?>
+    .modal-popup.quick-view .modal-inner-wrap {
+        width: <?php echo $block->getWindowWidth() ?>;
+    }
+    <?php endif; ?>
+    <?php if ($block->getWindowHeight()): ?>
+    .modal-popup.quick-view .modal-inner-wrap {
+        height: <?php echo $block->getWindowHeight() ?>;
+        overflow-y: scroll;
+    }
+    <?php endif; ?>
+</style>

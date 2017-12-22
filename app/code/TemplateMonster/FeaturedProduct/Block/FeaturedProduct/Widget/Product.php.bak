@@ -1,0 +1,444 @@
+<?php
+
+/**
+ *
+ * Copyright © 2015 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ */
+
+namespace TemplateMonster\FeaturedProduct\Block\FeaturedProduct\Widget;
+
+use Magento\Customer\Model\Context as CustomerContext;
+use Magento\Directory\Model\PriceCurrency;
+
+class Product extends \Magento\Catalog\Block\Product\AbstractProduct implements \Magento\Widget\Block\BlockInterface
+{
+
+    /**
+     * Default cache time
+     */
+    const CACHE_TIME = 86400;
+
+    /**
+     * @var \Magento\Framework\Pricing\PriceCurrencyInterface
+     */
+    protected $priceCurrency;
+
+<<<<<<< HEAD
+    /**
+     * @var \Magento\Widget\Helper\Conditions
+     */
+    protected $conditionsHelper;
+
+    /**
+     * Category collection factory
+     *
+     * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory
+     */
+    protected $_categoryCollectionFactory;
+
+=======
+>>>>>>> 8f4fbcaa10dfa6c7db467847a0a152df89cffb7d
+    protected $_template = 'TemplateMonster_FeaturedProduct::widget/products.phtml';
+    protected $_productFactory;
+    protected $_imageBuilder;
+    protected $_httpContext;
+
+    protected $_isCategoriesTab;
+
+
+    public function __construct(
+<<<<<<< HEAD
+        \Magento\Directory\Model\PriceCurrency $priceCurrency,
+        \Magento\Widget\Helper\Conditions $conditionsHelper,
+        \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
+=======
+        PriceCurrency $priceCurrency,
+>>>>>>> 8f4fbcaa10dfa6c7db467847a0a152df89cffb7d
+        \Magento\Catalog\Block\Product\Context $context,
+        \TemplateMonster\FeaturedProduct\Model\ProductFactory $productFactory,
+        \Magento\Framework\App\Http\Context $httpContext,
+        array $data = [])
+    {
+        $this->priceCurrency = $priceCurrency;
+<<<<<<< HEAD
+        $this->conditionsHelper = $conditionsHelper;
+        $this->_categoryCollectionFactory = $categoryCollectionFactory;
+=======
+>>>>>>> 8f4fbcaa10dfa6c7db467847a0a152df89cffb7d
+        $this->_imageBuilder = $context->getImageBuilder();
+        $this->_productFactory = $productFactory;
+        $this->_httpContext = $httpContext;
+        $this->_isCategoriesTab = false;
+        parent::__construct($context, $data);
+    }
+
+
+    public function _construct()
+    {
+        $this->addData(
+            ['cache_lifetime' => self::CACHE_TIME, 'cache_tags' => [\Magento\Catalog\Model\Product::CACHE_TAG]]
+        );
+        parent::_construct();
+    }
+
+    /**
+     * Get Key pieces for caching block content
+     *
+     * @return array
+     */
+    public function getCacheKeyInfo()
+    {
+        $cacheKeyFromData = "TM_";
+        $configData = $this->getData();
+
+        foreach($configData as $value) {
+            if(is_string($value)) {
+                $cacheKeyFromData .= $value;
+
+            }
+        }
+        return [
+            $cacheKeyFromData,
+            $this->_storeManager->getStore()->getId(),
+            $this->_design->getDesignTheme()->getId(),
+            $this->_httpContext->getValue(CustomerContext::CONTEXT_GROUP),
+            'template' => $this->getTemplate()
+        ];
+    }
+
+    public function getCacheLifetime()
+    {
+        if(!$this->getData('cache_lifetime')) {
+            return self::CACHE_TIME;
+        }
+        return $this->getData('cache_lifetime');
+    }
+
+    public function getProductIds()
+    {
+        $productArr = [];
+        $productIdsStr = $this->getData('product_ids');
+        if($productIdsStr && is_string($productIdsStr)) {
+            $productArr = explode(',',$productIdsStr);
+        }
+        return $productArr;
+    }
+
+    public function getItemWidth()
+    {
+        $productItemWidth = '';
+        $productPerRow = $this->getNumberPerRow();
+        if ($productPerRow) {
+            if (!$this->getShowCarousel()) {
+                $productItemWidth = 'style="width: ' . 100 / $productPerRow . '%;"';
+            }
+        }
+        return $productItemWidth;
+    }
+
+    /**
+     * Get array of available titles
+     *
+     * @return array
+     */
+
+    public function getTextData()
+    {
+        return json_decode($this->getJsonData(), true);
+    }
+
+    /**
+     * Get array of product types
+     *
+     * @return array
+     */
+
+    public function getTypes()
+    {
+        return explode(",", $this->getProductTypes());
+    }
+
+    /**
+     * Truncate product name
+     *
+     * @param string $name
+     * @return string
+     */
+    public function truncateProductName($name)
+    {
+        $name = $this->escapeHtml($name);
+        $truncate = (int) $this->getProductNameLength();
+        $nameLength = strlen($name);
+        if($truncate != 0 && is_int($truncate) && $nameLength > $truncate){
+            $name = substr($name, 0, $truncate) . '...';
+        }
+        return $name;
+    }
+
+    public function getCategoryNames()
+    {
+        $productTypesArray = explode(",", $this->getProductTypes());
+        $productTypesCount = count($productTypesArray);
+        $conditions = $this->conditionsHelper->decode($this->getConditionsEncoded());
+        $this->_isCategoriesTab = array_key_exists('1--1', $conditions) && $productTypesCount == 1;
+
+        $categories = ($this->_isCategoriesTab && $productTypesCount == 1)
+            ? explode(',', $conditions['1--1']['value'])
+            : false;
+        if(!$categories) {
+            return [];
+        }
+
+        /** @var \Magento\Catalog\Model\ResourceModel\Category $collection */
+        $collection = $this->_categoryCollectionFactory->create();
+        $collection->addIdFilter($categories);
+
+        $collection->addNameToResult();
+
+        $names = [];
+        foreach ($collection as $category) {
+            /** @var \Magento\Catalog\Model\Category $category */
+                $names[$category->getId()] = $category->getName();
+        }
+
+        return $names;
+    }
+
+    /**
+     * Return Product Collection
+     * @return array
+     */
+    protected function _getProductCollections()
+    {
+        $productTypesArray = explode(",", $this->getProductTypes());
+        $productTypesCount = count($productTypesArray);
+        $conditions = $this->conditionsHelper->decode($this->getConditionsEncoded());
+        $this->_isCategoriesTab = array_key_exists('1--1', $conditions) && $productTypesCount == 1;
+        $singleProductType = false;
+
+        $categories = ($this->_isCategoriesTab && $productTypesCount == 1)
+            ? explode(',', $conditions['1--1']['value'])
+            : false;
+
+        if($categories) {
+            $singleProductType = $this->getProductTypes();
+            $productTypesArray = $categories;
+        }
+
+        return $this->_createCollections($productTypesArray, $singleProductType);
+    }
+
+    /**
+     * Create product collection
+     *
+     * @param $array
+     * @param mixed
+     * @return array
+     */
+    protected function _createCollections($array, $singleProductType = false){
+        $productIds = $this->getProductIds();
+        $numberPerView = (int)$this->getNumberPerView();
+        $productCollectionsArray = false;
+        foreach ($array as $element){
+            $products = $singleProductType ? $singleProductType : $element;
+            try {
+                $productFactory = $this->_productFactory->create($products);
+            } catch(\Exception $e) {
+                continue;
+            }
+            $categoryId = $singleProductType ? (int) $element : false;
+            if($categoryId) {
+                $productCollectionsArray[$products][$categoryId] = $productFactory->getPreparedCollection($numberPerView, $productIds, $categoryId);
+            } else {
+                $productCollectionsArray[$products] = $productFactory->getPreparedCollection($numberPerView, $productIds);
+            }
+        }
+
+        return $productCollectionsArray;
+    }
+
+    public function isCategoryTabs($productCollections)
+    {
+        return ($this->_isCategoriesTab && count($productCollections) == 1);
+    }
+
+    /**
+     * Return HTML block with price
+     *
+     * @param \Magento\Catalog\Model\Product $product
+     * @param string $priceType
+     * @param string $renderZone
+     * @param array $arguments
+     * @return string
+     * @SuppressWarnings(PHPMD.NPathComplexity)
+     */
+    public function getProductPriceHtml(
+        \Magento\Catalog\Model\Product $product,
+        $priceType = null,
+        $renderZone = \Magento\Framework\Pricing\Render::ZONE_ITEM_LIST,
+        array $arguments = []
+    ) {
+        if (!isset($arguments['zone'])) {
+            $arguments['zone'] = $renderZone;
+        }
+        $arguments['zone'] = isset($arguments['zone'])
+            ? $arguments['zone']
+            : $renderZone;
+        $arguments['price_id'] = isset($arguments['price_id'])
+            ? $arguments['price_id']
+            : 'old-price-' . $product->getId() . '-' . $priceType;
+        $arguments['include_container'] = isset($arguments['include_container'])
+            ? $arguments['include_container']
+            : true;
+        $arguments['display_minimal_price'] = isset($arguments['display_minimal_price'])
+            ? $arguments['display_minimal_price']
+            : true;
+
+        /** @var \Magento\Framework\Pricing\Render $priceRender */
+        $priceRender = $this->getLayout()->getBlock('product.price.render.default');
+
+        $price = '';
+        if ($priceRender) {
+            $price = $priceRender->render(
+                \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE,
+                $product,
+                $arguments
+            );
+        }
+        return $price;
+    }
+
+    public function getProductsLabel($product, $label)
+    {
+        return $this->replaceString($product, $label);
+    }
+
+    public function replaceString($product, $string)
+    {
+        switch ($string) {
+
+            case $this->findSubstring($string, "{SAVE_PERCENT}"):
+                return $this->replaceSubstring("{SAVE_PERCENT}", $this->getSavePercent($product), $string);
+
+            case $this->findSubstring($string, "{SAVE_AMOUNT}"):
+                return $this->replaceSubstring("{SAVE_AMOUNT}", $this->getSaveAmount($product), $string);
+
+            case $this->findSubstring($string, "{PRICE}"):
+                return $this->replaceSubstring("{PRICE}", $this->getFormatedPrice($product), $string);
+
+            case $this->findSubstring($string, "{SPECIAL_PRICE}"):
+                return $this->replaceSubstring("{SPECIAL_PRICE}", $this->getSpecialPrice($product), $string);
+
+            case $this->findSubstring($string, "{NEW_FOR}"):
+                return $this->replaceSubstring("{NEW_FOR}", $this->getNewFor($product), $string);
+
+            case $this->findSubstring($string, "{SKU}"):
+                return $this->replaceSubstring("{SKU}", $this->getSku($product), $string);
+
+            case $this->findSubstring($string, '{ATTR:'):
+                return $this->attrCode($product, $string);
+
+            case $this->findSubstring($string, "{BR}"):
+                return $this->breakString($string);
+
+            default:
+                return $string;
+
+        }
+    }
+
+    protected function findSubstring($string, $substring)
+    {
+        return (strpos($string, $substring) !== false) ? true : false;
+    }
+
+    protected function replaceSubstring($substring, $replacement, $string) {
+        return str_replace($substring, $replacement, $string);
+    }
+
+    public function getSavePercent($product)
+    {
+        if ($product->getPrice() && $product->getFinalPrice()) {
+            $savePercent =  ceil(
+                100 - ((100 / $product->getPrice())
+                    * $product->getFinalPrice())
+            );
+        } else {
+            $savePercent = 0;
+        }
+
+        return $savePercent.'%';
+    }
+
+    public function getSaveAmount($product)
+    {
+        if ($product->getPrice() <= $product->getFinalPrice()) {
+            return false;
+        }
+        $price = $product->getPrice() - $product->getFinalPrice();
+        $priceInCurrentCurrency = $this->priceCurrency->convertAndRound($price);
+        return $this->priceCurrency->format($priceInCurrentCurrency);
+    }
+
+    public function getFormatedPrice($product)
+    {
+        return $product->getFormatedPrice();
+    }
+
+    public function getSpecialPrice($product)
+    {
+        $specialPrice = $product->getSpecialPrice();
+        return $this->priceCurrency->format($specialPrice);
+    }
+
+    public function getNewFor($product)
+    {
+        $created = $product->getCreatedAt();
+
+        $dStart = new \DateTime();
+        $dEnd  = new \DateTime($created);
+        $dDiff = $dStart->diff($dEnd);
+
+        if ($dDiff->days <= 0) {
+            return false;
+        }
+
+        return $dDiff->days;
+    }
+
+    public function getSku($product)
+    {
+        return $product->getData('sku');
+    }
+
+    public function attrCode($product, $string)
+    {
+        preg_match("/{([^}]+)}*/i", $string, $placeholder);
+        preg_match_all('/\{.*?}/', $placeholder[0], $placeholderText);
+        $attr = str_replace(['{', '}', ':', 'ATTR'], '', $placeholderText[0][0]);
+        $result = str_replace($placeholder[0], $product->getData($attr), $string);
+        if (!$attr || !$result) {
+            return false;
+        }
+        return $result;
+    }
+
+    public function breakString($string)
+    {
+        return str_replace('{BR}', '<br/>', $string);
+    }
+
+    /**
+     * Prepare collection with new products
+     *
+     * @return \Magento\Framework\View\Element\AbstractBlock
+     */
+    protected function _beforeToHtml()
+    {
+        $this->setProductCollections($this->_getProductCollections());
+        return parent::_beforeToHtml();
+    }
+
+}

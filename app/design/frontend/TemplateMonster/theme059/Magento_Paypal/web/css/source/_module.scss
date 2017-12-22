@@ -1,0 +1,31 @@
+.account-billing-agreements__wrapper{
+    .table-title{
+        @extend .heading-3;
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .pager{
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        margin-bottom: 20px;
+
+        .toolbar-amount,
+        .limiter{
+            @include flex-basis(auto);
+        }
+
+        .field{
+            padding: 0;
+        }
+    }
+
+    .table-billing-agreements{
+        margin-bottom: 26px;
+    }
+
+    .select2-container{
+        max-width: 450px;
+    }
+}

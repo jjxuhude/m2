@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 MageWorx. All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <jjxuhuade_smtp>
+            	<configuration>
+            		<types>
+            			<disable>Disabled</disable>
+            			<google>Google Apps or Gmail</google>
+            			<smtp>Custom SMTP</smtp>
+            			<sendgrid>SendGrid</sendgrid>
+            			<mailup>MailUp</mailup>
+            			<ses>Amazon SES</ses>
+            		</types>
+            		<usages>
+            			<default>Default</default>
+            			<never>Never</never>
+                    </usages>
+          			<connection>disable</connection>
+            	</configuration>
+            	<smtp>
+            		<email>jack.xu@hairup.com</email>
+            		<password></password>
+            		<authentication>login</authentication>
+            		<host>smtp.exmail.qq.com</host>
+            		<port>465</port>
+            		<ssl>ssl</ssl>
+            	</smtp>
+            	<google>
+            		<email>cs@hairextensionsale.com</email>
+            		<password>sspringg!QAZ2wsx</password>
+            	</google>
+            	<sendgrid>
+            		<email>Kris1993</email>
+            		<password>1qsxG2waz</password>
+            	</sendgrid>
+        </jjxuhuade_smtp>
+    </default>
+</config>
+
+

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="TemplateMonster\ProductLabels\Api\Data\ProductLabelInterface"
+               type="TemplateMonster\ProductLabels\Model\ProductLabel" />
+    <preference for="TemplateMonster\ProductLabels\Api\ProductLabelRepositoryInterface"
+               type="TemplateMonster\ProductLabels\Model\ProductLabelRepository" />
+    <type  name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="smart_label_product_listing_data_source" xsi:type="string">TemplateMonster\ProductLabels\Model\ResourceModel\ProductLabel\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="TemplateMonster\ProductLabels\Model\ResourceModel\ProductLabel\Grid\Collection">
+            <arguments>
+                <argument name="mainTable" xsi:type="string">smart_label_product</argument>
+                <argument name="eventPrefix" xsi:type="string">smart_label_product_grid_collection</argument>
+                <argument name="eventObject" xsi:type="string">smart_label_product_collection</argument>
+                <argument name="resourceModel" xsi:type="string">TemplateMonster\ProductLabels\Model\ResourceModel\ProductLabels</argument>
+            </arguments>
+    </type>
+    <type name="Magento\Catalog\Block\Product\ListProduct">
+        <plugin name="addLabel" type="TemplateMonster\ProductLabels\Block\Product\ListProductPlugin" sortOrder="300" />
+    </type>
+    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
+        <plugin name="addLabelWidget" type="TemplateMonster\ProductLabels\Block\Product\WidgetProductsListPlugin" sortOrder="400" />
+    </type>
+    <virtualType name="SmartProductLabelPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="SmartProductLabelDataProvider"  type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">TemplateMonster\ProductLabels\Model\ResourceModel\ProductLabels\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">SmartProductLabelPool</argument>
+        </arguments>
+    </virtualType>
+</config>

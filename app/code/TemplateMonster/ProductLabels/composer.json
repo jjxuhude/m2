@@ -1,0 +1,13 @@
+{
+  "name" : "templatemonster/smart-product-labels",
+  "autoload": {
+    "psr-4": {"TemplateMonster\\ProductLabels\\":""},
+    "files": [ "registration.php" ]
+  },
+  "description": "Product Labels",
+  "require": {
+    "magento/module-catalog": "*"
+  },
+  "type": "magento2-module",
+  "version": "1.1.1"
+}

@@ -1,0 +1,40 @@
+<script type="text/x-magento-init">
+    {
+        "#product_label_images_section_content, #product_label_condition_section_content": {
+            "initAccordion": <?php /* @escapeNotVerified */ echo $block->getJsLayout();?>
+    },
+        "#product_label_main_section_content": {
+            "initAccordion": { "active": "0"}
+        }
+    }
+</script>
+<script>
+    require(['jquery','jquery/colorpicker/js/colorpicker'], function($) {
+        $(function() {
+            $('#product_label_images_section_content .field-color-picker').each(function () {
+                var picker = $(this);
+                picker.attr('autocomplete', 'off')
+                      .css('backgroundColor', function() {
+                          return $(this).val();
+                      });
+                picker.ColorPicker({
+                    onChange: function (hsb, hex) {
+                        var color = '#' + hex;
+                        picker.val(color).css('backgroundColor', color);
+                        picker.trigger('change');
+                    }
+                });
+            });
+        });
+    });
+</script>
+<style>
+    .field-color-picker {
+        cursor: pointer;
+        background: url('<?php echo $this->getViewFileUrl("TemplateMonster_ProductLabels::images/colorpicker.png"); ?>')
+                    no-repeat right;
+    }
+    .field-color-picker::-ms-clear {
+        display: none;
+    }
+</style>

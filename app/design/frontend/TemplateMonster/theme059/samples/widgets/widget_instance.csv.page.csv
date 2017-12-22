@@ -1,0 +1,7 @@
+"page_id","instance_id","page_group","layout_handle","block_reference","page_for","entities","page_template"
+"1","1","pages","cms_index_index","page.top","all",,
+"2","2","pages","cms_index_index","content","all",,"catalog/widget_image_grid.phtml"
+"3","3","pages","cms_index_index","content","all",,"widget/static_block/default.phtml"
+"4","4","pages","cms_index_index","content","all",,"widget/products-grid.phtml"
+"5","5","pages","cms_index_index","content.bottom","all",,"widget/static_block/default.phtml"
+"6","6","pages","cms_index_index","content.bottom","all",,

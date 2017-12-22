@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="smtp" sortOrder="2011">
+			<label>Smtp Service</label>
+		</tab>
+		
+		<section id="jjxuhuade_smtp" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+			<label>Configuration</label>
+			<tab>smtp</tab>
+			<resource>Jjxuhuade_Smtp::configuration</resource>
+			<group id="configuration" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>General Settings</label>
+				<field id="connection" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Email Connection]]></label>
+                    <source_model>Jjxuhuade\Smtp\Model\Config\Connection</source_model>
+                    <comment><![CDATA[请选择服务商连接类型]]></comment>
+                </field>
+            </group>
+            <group id="google" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Google Apps or Gmail</label>
+                <field id="email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Google Apps Email Address]]></label>
+                    <validate>validate-email</validate>
+                </field>
+                 <field id="password" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Google Apps Password]]></label>
+                </field>
+            </group>
+                
+           <group id="smtp" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                 <label>Custom SMTP</label>
+                <field id="email" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Email Address]]></label>
+                    <validate>validate-email</validate>
+                </field>
+                 <field id="password" translate="label" type="password" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Password]]></label>
+                </field>
+                <field id="authentication" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Authentication]]></label>
+                </field>
+                <field id="host" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Host]]></label>
+                </field>
+                <field id="port" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Port]]></label>
+                </field>
+                <field id="ssl" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[SSL Security]]></label>
+                    <comment><![CDATA[Custom SMTP servers can be configured in this section. For more information about these configuration options and troubleshooting advice please see ]]></comment>
+                </field>
+            </group>
+                
+              
+             <group id="sendgrid" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>SendGrid</label>
+                <field id="email" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[SendGrid Username]]></label>
+                </field>
+                <field id="password" translate="label" type="password" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[SendGrid Password]]></label>
+                </field>
+             </group>
+             
+             <!-- 
+             <group id="mailup" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>MailUp</label>
+                <field id="email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[MailUp  Username]]></label>
+                </field>
+                <field id="password" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[MailUp  Password]]></label>
+                </field>
+             </group>
+                
+                
+            <group id="ses" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                 <label>Amazon SES</label>
+                <field id="access_key" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Amazon SES Access Key]]></label>
+                </field>
+                <field id="private_key" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Amazon SES Secret Key]]></label>
+                </field>
+			</group>
+			
+			<group id="queue" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>Queue Configuration</label>
+				<field id="usage" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Queue Usage]]></label>
+                     <source_model>Jjxuhuade\Smtp\Model\Config\Usages</source_model>
+                </field>
+                <field id="percron" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Emails to Send]]></label>
+                    <comment>Number of emails to send per cron invocation. Leave blank for default of 100 messages sent per cron.</comment>
+                </field>
+                <field id="pause" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Pause between emails (ms)]]></label>
+                    <comment>Some SMTP servers restrict email sending rates as an anti-spam measure. Add a delay between each email being sent. Leave blank for default 0 ms.</comment>
+                </field>
+			</group>
+			
+			<group id="debug" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label>Log Emails</label>
+				<field id="logenabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Log Emails]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>This will log all outbound emails. View from System->Tools->SMTPPro - Email Log.</comment>
+                </field>
+                <field id="cleanlog" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Clean Email Logs]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>If this is set to yes, old entries will be deleted from email log. Cron is required and log cleaning must be enabled in system/log/enabled for this to work.</comment>
+                </field>
+                 <field id="cleanlog_after_days" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Email Log Days Kept]]></label>
+                </field>
+                <field id="log_debug" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label><![CDATA[Enable Debug Logging]]></label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>If yes, a log file will be written with debug information to file var/log/aschroder_smtppro.log.</comment>
+                </field>
+			</group>
+              -->
+			
+			
+		</section>
+	</system>
+</config>

@@ -1,0 +1,266 @@
+//
+//  Order
+//  ---------------------------------------------
+
+.sales-order-print{
+    text-align: center;
+
+    .logo{
+        display: inline-block;
+        margin-bottom: 32px;
+    }
+
+    .columns{
+        text-align: left;
+    }
+
+    .page-title{
+        margin-bottom: 16px;
+    }
+    .order-status{
+        display: inline-block;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .order-date{
+        display: inline-block;
+        font-size: 16px;
+        font-style: italic;
+    }
+}
+
+.order-details-items{
+    table.table-order-items{
+        caption{
+            display: none;
+        }
+
+        tbody{
+            &:nth-child(odd){
+                @media (min-width: $screen-sm-min){
+                    background: $bg-light;
+                }
+            }
+            &:first-child:last-child tr{
+                background: transparent;
+            }
+        }
+
+        tbody > tr > td{
+            vertical-align: middle;
+        }
+
+        td.name:before{
+            @media (max-width: $screen-sm-min - 1){
+                background: $bg-light;
+            }
+        }
+
+        .product-item-name{
+            font-weight: 700;
+        }
+
+        .item-options{
+            display: block;
+            dt, dd{
+                display: inline;
+                font-size: 12px;
+            }
+            dt:after{
+                content: ':';
+            }
+            dd{
+                padding: 0 8px 0 4px;
+                &:after{
+                    content: ';';
+                }
+            }
+        }
+
+        tfoot{
+            border-top: 1px solid $border-color;
+            font-weight: 700;
+
+            @media (max-width: $screen-sm-min - 1){
+                background: $bg-light;
+            }
+        }
+    }
+
+    .block-order-details-view .block-content .box-title{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+.box-order-billing-address,
+.box-order-billing-method{
+    .box-title{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+.order-links{
+    font-size: 18px;
+    strong{
+        font-weight: normal;
+    }
+}
+
+.order-details-items {
+    .order-title{
+        display: none;
+    }
+}
+
+.block-order-details-view{
+    padding: 20px 0 0;
+
+    overflow: hidden;
+
+    .block-content{
+        .box {
+            display: inline-block;
+            min-width: 50%;
+            float: left;
+            padding-right: 15px;
+            border-top: solid 1px $border-color;
+
+            &.box-order-billing-address{
+                clear: both;
+            }
+
+            @media (max-width: $screen-sm-min - 1){
+                min-width: 100%;
+            }
+        }
+    }
+}
+
+// Customer account orders history
+//-----------------------------------
+.orders-history__wrapper{
+    .table-title{
+        @extend .heading-3;
+        display: block;
+        margin-bottom: 16px;
+    }
+
+    .pager{
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        margin-bottom: 20px;
+
+        .toolbar-amount,
+        .limiter{
+            @include flex-basis(auto);
+        }
+
+        .field{
+            padding: 0;
+        }
+    }
+
+    .table-order-items caption{
+        display: none;
+    }
+}
+
+// Sidebar reorder
+//-----------------------------------
+#reorder-validate-detail{
+    strong.subtitle{
+        display: none;
+    }
+    .no-display{
+        display: block;
+    }
+
+    .actions-toolbar .primary{
+        margin-bottom: 4px;
+    }
+    .actions-toolbar .secondary a{
+        font-weight: 700;
+    }
+    .action.tocart{
+        width: 100%;
+        text-align: center;
+        padding: 14px 33px;
+
+        @media (min-width: $screen-xs-min) and (max-width: $screen-md-min - 1){
+            width: auto;
+        }
+    }
+}
+
+#cart-sidebar-reorder{
+    margin-bottom: 8px;
+
+    .product-item{
+        padding: 8px 0;
+        line-height: 23px;
+        @include make-flex;
+        &:first-child{
+            padding-top: 0;
+        }
+    }
+    .field{
+        padding: 0;
+    }
+    .item.choice label span{
+        display: none;
+    }
+    .checkbox{
+        margin: 0;
+        vertical-align: middle;
+    }
+    .product-item-name{
+        padding: 0 4px 0 12px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    .product-item-link{
+        color: $text-dark;
+        &:hover{
+            color: $primary;
+        }
+    }
+}
+
+#cart-sidebar-reorder {
+    .control input[type=checkbox]{
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+    .control .label {
+        &:before{
+            display: inline-block;
+            font-size: 16px;
+            line-height: 1rem;
+            width: 18px;
+            height: 18px;
+            font-style: normal;
+            vertical-align: baseline;
+            color: $primary;
+            text-align: center;
+            padding-top: 2px;
+        }
+    }
+
+    input[type=checkbox] + .label{
+        &:before{
+            @include font-icon__pseudo('\e835', $material-icons);
+        }
+    }
+    input[type=checkbox]:checked + .label:before{
+        @include font-icon__pseudo('\e834', $material-icons);
+    }
+    input[type=checkbox]:disabled:checked + .label:before{
+        @include font-icon__pseudo('\e834', $material-icons);
+        pointer-events: none;
+        opacity: .6;
+    }
+}

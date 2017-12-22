@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="TemplateMonster\ProductLabels\Model\ProductLabel">
+        <arguments>
+            <argument name="relatedCacheTypes" xsi:type="array">
+                <item name="blockCache" xsi:type="string">block_html</item>
+                <item name="fullPageCache" xsi:type="string">full_page</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Product">
+        <plugin name="apply_smart_label_after_product_save"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\Product\Save\ApplyLabel"/>
+    </type>
+    <type name="Magento\Catalog\Model\Category">
+        <plugin name="apply_smart_label_after_products_assign"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\Category"/>
+    </type>
+    <type name="Magento\Store\Model\Website">
+        <plugin name="reindex_after_delete_website_smart_label"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\Website"/>
+    </type>
+    <type name="Magento\Customer\Model\Group">
+        <plugin name="reindex_after_delete_customer_group_smart_label"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\CustomerGroup"/>
+    </type>
+    <type name="Magento\ImportExport\Model\Import">
+        <plugin name="reindex_smart_label_after_import"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\ImportExport"/>
+    </type>
+    <type name="Magento\Catalog\Model\ResourceModel\Eav\Attribute">
+        <plugin name="change_product_attribute_smart_label"
+                type="TemplateMonster\ProductLabels\Plugin\Indexer\Product\Attribute"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Action">
+        <plugin name="price_plugin_smart_label" type="TemplateMonster\ProductLabels\Plugin\Indexer\Product\Action"/>
+    </type>
+</config>

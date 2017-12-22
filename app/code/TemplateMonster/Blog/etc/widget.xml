@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="tm_blog_post_list" class="TemplateMonster\Blog\Block\Widget\PostList" placeholder_image="TemplateMonster_Blog::images/widget_post_list.png">
+        <label translate="true">Blog Latest Posts</label>
+        <description translate="true">List of latest posts</description>
+        <parameters>
+            <parameter name="title" xsi:type="text" visible="true">
+                <label translate="true">Title</label>
+                <description translate="true">Blog widget title</description>
+            </parameter>
+            <parameter name="post_title_length" xsi:type="text" visible="true">
+                <label translate="true">Post title length</label>
+                <description translate="true">Length of the post title. Leave empty not to truncate titles.</description>
+            </parameter>
+            <parameter name="post_amount" xsi:type="text" visible="true">
+                <label translate="true">Post amount</label>
+                <description translate="true">Amount of posts to display</description>
+            </parameter>
+            <parameter name="post_amount_per_row" xsi:type="text" visible="true">
+                <label translate="true">Post amount per row</label>
+                <description translate="true">Amount of posts per row</description>
+            </parameter>
+            <parameter name="is_enable_carousel" xsi:type="select" visible="true" source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable carousel</label>
+                <description translate="true">Turn on to enable carousel</description>
+            </parameter>
+            <parameter name="post_amount_per_view" xsi:type="text" visible="true">
+                <label translate="true">Post amount per view</label>
+                <description translate="true">Amount of posts per view</description>
+                <depends>
+                    <parameter name="is_enable_carousel" value="1"/>
+                </depends>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true">
+                <label translate="true">Template</label>
+                <description translate="true">Template to use</description>
+                <options>
+                    <option name="default" value="widget/post_list.phtml" selected="true">
+                        <label translate="true">Post list</label>
+                    </option>
+                    <option name="grid" value="widget/post_grid.phtml">
+                        <label translate="true">Post grid</label>
+                    </option>
+                    <option name="column_template" value="widget/post_column.phtml">
+                        <label translate="true">Column Template</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

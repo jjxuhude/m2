@@ -1,0 +1,60 @@
+<?php
+$category = $block->getCategory();
+$showImageInCategory = $block->getImageCategories();
+$showImageInSubcategory = $block->getImageSubcategories();
+$imageType = 'thumbnail_image';
+
+$subCategoryToShow = $block->getAmountSubcategories();
+$imageWidth = $block->getImageWidth();
+
+
+
+$viewMore = $block->getViewMore();
+$viewMoreText = $block->getViewMoreText();
+$html = '';
+
+?>
+
+
+<?php 
+$html .= "<div class='catalog-image-grid category-id-" . $category->getId() . " " . $block->getCssClass() . "'>";
+$html .= "	<div class='catalog-image-grid-title'>" . $block->getTitle() . "</div>";
+$html .= "	<span class='category-image'>";
+$html .= "		<img alt='' width='{$imageWidth}' src='{$block->getImageByType($category, $imageType)}'>";
+$html .= "	</span>";
+
+$subCategories = $block->getChildrens($category);
+if(count($subCategories)>0):
+$html .= "	<div class='inner'>";
+$html .= "		<ul>";
+$categoryNum = 0;
+foreach ($subCategories as $subCategory):
+	$categoryNum++;
+	if($categoryNum<=$subCategoryToShow):
+		$html .= "<li><a href='{$subCategory->getUrl()}' class='subcategory-link'>";
+		if ($showImageInSubcategory && $block->getImageByType($subCategory, $imageType)):
+			$html .= "<span class='subcategory-image'>";
+			$html .= "<img alt='' src='{$block->getImageByType($subCategory, $imageType)}'>";
+			$html .= "</span>";
+		endif;
+
+		$html .= '<span class="subcategory-name">'."{$subCategory->getName()}".'</span>';
+		$html .= "</a></li>";
+	endif;
+endforeach;
+if ($viewMore && $categoryNum> $subCategoryToShow):
+	$html .= "<li class='view-more'><a href='{$category->getUrl()}' class='button-more'><span>";
+	$html .=  __($viewMoreText ?: sprintf('View more in %s', $category->getName()));
+	$html .= "</span></a></li>";
+endif;
+
+$html .= "		</ul>";
+$html .= "	</div>";
+endif;
+$html .= "</div>";
+echo $html;
+?>
+
+
+
+

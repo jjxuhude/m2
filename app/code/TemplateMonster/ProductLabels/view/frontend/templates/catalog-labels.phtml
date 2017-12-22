@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © 2016 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+
+<?php
+$labelHelper = $this->helper('TemplateMonster\ProductLabels\Helper\LabelOutput');
+$dataHelper = $this->helper('TemplateMonster\ProductLabels\Helper\Data');
+$labelHelper->setProduct($this->getProduct());
+?>
+
+<?php if ($labelHelper->getProduct()->getAppliedRules()): ?>
+    <div class="smart-labels" data-mage-init='{"smartLabels": {"container" : "<?php echo $dataHelper->getCategoryContainer() ?>"}}'>
+        <?php
+        foreach ($labelHelper->getProduct()->getAppliedRules() as $productId => $sortOrder) :
+            $smartLabel = $labelHelper->getCollection()->getItemById($productId);
+                if ($smartLabel->getCategoryLabelStatus() == 'enable'):
+                    // Category Text Label
+                    if ($smartLabel->getCategoryLabelType() == 'text'):
+                        if ($smartLabel->getCategoryTextComment()):
+                        echo '<span class="smart-label label-text label-id-'
+                            . $smartLabel->getSmartLabelId() . ' '
+                            . $smartLabel->getCategoryTextContainer() . '">'
+                            . $labelHelper->replaceString($smartLabel->getCategoryTextComment())
+                            .'</span>';
+                        endif;
+                    // Category Image Label
+                    elseif ($smartLabel->getCategoryLabelType() == 'image'):
+                        if ($smartLabel->getCategoryImageLabel()):
+                        echo '<span class="smart-label label-image label-id-'
+                            . $smartLabel->getSmartLabelId() . ' '
+                            . $smartLabel->getCategoryImageContainer() . '">
+                                <img src="'. $labelHelper->getMedia().$smartLabel->getCategoryImageLabel() . '" alt="" />'
+                            .'</span>';
+                        endif;
+                    endif;
+                endif;
+        endforeach; ?>
+    </div>
+<?php endif; ?>

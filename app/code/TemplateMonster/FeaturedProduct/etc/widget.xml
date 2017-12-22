@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="featured_products"
+            class="TemplateMonster\FeaturedProduct\Block\FeaturedProduct\Widget\Product">
+        <label translate="true">Featured products</label>
+        <description translate="true">Featured products.</description>
+        <parameters>
+            <parameter name="product_types" xsi:type="multiselect" required="true" visible="true"
+                       source_model="TemplateMonster\FeaturedProduct\Model\Source\Product\Type">
+                <label translate="true">Product types</label>
+                <description translate="true">Product types. If choose 2 and more product types, widget will be display as tabs</description>
+                <!--<options>-->
+                    <!--<option name="new_product" value="new_product">-->
+                        <!--<label translate="true">New Products</label>-->
+                    <!--</option>-->
+                    <!--<option name="sale_product" value="sale_product">-->
+                        <!--<label translate="true">Sale Products</label>-->
+                    <!--</option>-->
+                    <!--<option name="viewed_product" value="viewed_product">-->
+                        <!--<label translate="true">Most Viewed Products</label>-->
+                    <!--</option>-->
+                    <!--<option name="bestsellers_product" value="bestsellers_product">-->
+                        <!--<label translate="true">Bestsellers Products</label>-->
+                    <!--</option>-->
+                    <!--<option name="rated_product" value="rated_product">-->
+                        <!--<label translate="true">Top Rated Products</label>-->
+                    <!--</option>-->
+                    <!--<option name="manual_product" value="manual_product">-->
+                        <!--<label translate="true">Manual Products</label>-->
+                    <!--</option>-->
+                <!--</options>-->
+            </parameter>
+            <parameter name="product_ids" xsi:type="block" visible="true">
+                <label translate="true">Choose custom products</label>
+                <block class="TemplateMonster\FeaturedProduct\Block\Adminhtml\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select ...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="categories" xsi:type="conditions" visible="true" required="true"
+                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                <label translate="true">Categories</label>
+                <description translate="true">Select category. If choose 2 and more Product Type, categories will be disabled.</description>
+            </parameter>
+            <parameter name="json_data" xsi:type="text" visible="false">
+                <label translate="true">Data (Titles and Labels)</label>
+            </parameter>
+
+            <parameter name="is_banner" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Use Banner</label>
+                <description translate="true">Include banner</description>
+            </parameter>
+
+            <parameter name="banner_content" xsi:type="block" visible="true">
+                <label translate="true">Banner</label>
+                <description translate="true">Setup banner.</description>
+                <block class="TemplateMonster\FeaturedProduct\Block\Adminhtml\Widget\Editor"></block>
+            </parameter>
+
+            <parameter name="product_image_width" xsi:type="text" visible="true">
+                <label translate="true">Product Image width</label>
+                <description translate="true">Set product image width in px. Example: 240</description>
+            </parameter>
+            <parameter name="product_image_height" xsi:type="text" visible="true">
+                <label translate="true">Product Image height</label>
+                <description translate="true">Set product image height in px. Example: 240</description>
+            </parameter>
+
+            <parameter name="number_per_view" xsi:type="text" visible="true">
+                <label translate="true">Products to Display</label>
+                <description translate="true">Number of products to display</description>
+            </parameter>
+            <parameter name="show_carousel" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Carousel</label>
+                <description translate="true">Display as carousel</description>
+            </parameter>
+            <parameter name="number_to_display" xsi:type="text" visible="true">
+                <label translate="true">Number of products per view</label>
+                <description translate="true">Number of products to display
+                    in carousel. Doesn't apply within sidebar template (there is the option equals 1)</description>
+                <depends>
+                    <parameter name="show_carousel" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="number_per_row" xsi:type="text" visible="true">
+                <label translate="true">Number of products per row</label>
+                <description translate="true">Number of products per row. Doesn't apply within sidebar template (there is the option equals 1)</description>
+                <depends>
+                    <parameter name="show_carousel" value="0" />
+                </depends>
+            </parameter>
+            <parameter name="use_arrows" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Use arrows</label>
+                <description translate="true">Use arrows for carousel navigation</description>
+                <depends>
+                    <parameter name="show_carousel" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="prev_button" xsi:type="text" visible="true">
+                <label translate="true">Prev button css class</label>
+                <description translate="true">Css class for prev button (e.g. for font icon)</description>
+                <depends>
+                    <parameter name="use_arrows" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="next_button" xsi:type="text" visible="true">
+                <label translate="true">Next button css class</label>
+                <description translate="true">Css class for next button (e.g. for font icon)</description>
+                <depends>
+                    <parameter name="use_arrows" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="use_pagination" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Use Pagination</label>
+                <description translate="true">Use dots for carousel pagination</description>
+                <depends>
+                    <parameter name="show_carousel" value="1" />
+                </depends>
+            </parameter>
+
+            <parameter name="product_name_length" xsi:type="text" visible="true">
+                <label translate="true">Product Name length</label>
+                <description translate="true">Set the product name length in widget instance</description>
+            </parameter>
+            <parameter name="css_class" xsi:type="text" visible="true">
+                <label translate="true">Css class</label>
+                <description translate="true">Css class for widget instance</description>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">86400 by default, if not set. To refresh instantly, clear the Blocks HTML Output cache.</description>
+            </parameter>
+            <parameter name="show_label" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Label</label>
+            </parameter>
+
+            <parameter name="hover_type" xsi:type="select" visible="true"
+                       source_model="TemplateMonster\FeaturedProduct\Model\Source\Product\HoverType">
+                <label translate="true">Choose hover type</label>
+                <description translate="true">Select type of product image hover.</description>
+            </parameter>
+            <parameter name="carousel_slides_count" xsi:type="text" visible="true">
+                <label translate="true">Slides count</label>
+                <description translate="true">Set slides count for carousel. If empty, all product images will be included to carousel</description>
+                <depends>
+                    <parameter name="hover_type" value="carousel" />
+                </depends>
+            </parameter>
+            <parameter name="gallery_slides_count" xsi:type="text" visible="true">
+                <label translate="true">Slides count</label>
+                <description translate="true">Set slides count for gallery. If empty, all product images will be included to gallery</description>
+                <depends>
+                    <parameter name="hover_type" value="gallery" />
+                </depends>
+            </parameter>
+            <parameter name="thumb_width" xsi:type="text" visible="true">
+                <label translate="true">Thumbnails width</label>
+                <description translate="true">Set thumbnails width in px. Example: 50</description>
+                <depends>
+                    <parameter name="hover_type" value="gallery" />
+                </depends>
+            </parameter>
+            <parameter name="thumb_height" xsi:type="text" visible="true">
+                <label translate="true">Thumbnails height</label>
+                <description translate="true">Set thumbnails height in px. Example: 50</description>
+                <depends>
+                    <parameter name="hover_type" value="gallery" />
+                </depends>
+            </parameter>
+
+            <parameter name="template" xsi:type="select" required="true" visible="true">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/products-grid.phtml" selected="true">
+                        <label translate="true">Products Grid</label>
+                    </option>
+                    <option name="list" value="widget/products-list.phtml">
+                        <label translate="true">Products List</label>
+                    </option>
+                    <option name="sidebar" value="widget/products-sidebar.phtml">
+                        <label translate="true">Products Sidebar</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

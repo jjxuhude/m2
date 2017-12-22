@@ -1,0 +1,20 @@
+<?php
+/** @var \Magento\Newsletter\Block\Subscribe $block */
+$id = uniqid('newsletter-');
+?>
+<div class="block newsletter">
+    <form class="form subscribe"
+        novalidate
+        action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
+        method="post"
+        data-mage-init='{"validation": {"errorClass": "mage-error"}}'
+        id="newsletter-validate-detail">
+        <div class="field newsletter">
+            <div class="control">
+                <input name="email" type="email" id="<?php echo $id ?>"
+                            placeholder="<?php /* @escapeNotVerified */ echo __('Enter your email address') ?>"
+                            data-validate="{required:true, 'validate-email':true}"/>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,111 @@
+//
+//  Grid
+//  ---------------------------------------------
+.products-grid {
+    .product-items {
+        @include make-flex();
+        @include flex-wrap(wrap);
+        @media(max-width: $screen-md-min - 1) {
+            @include make-row(30px);
+        }
+        @media(min-width: $screen-md-min) {
+            @include make-row();
+        }
+    }
+    .product-item {
+        @media(max-width: $screen-md-min - 1) {
+            @include make-col(30px);
+        }
+        @media(min-width: $screen-md-min) {
+            @include make-col();
+        }
+        margin-bottom: $gutter-width;
+        @media(max-width: $screen-md-min - 1) {
+            @include flex-basis(50%);
+        }
+        @media(min-width:$screen-md-min) and (max-width:$screen-lg-min - 1) {
+            @include flex-basis(33.33%);
+        }
+        @media(min-width:$screen-lg-min) {
+            @include flex-basis(25%);
+        }
+    }
+    .product-item_wrap-1 {
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        @media(max-width: $screen-lg-min - 1) {
+            @include flex-wrap(wrap);
+        }
+        .price-box {
+            margin-bottom: 0;
+        }
+    }
+    //Image
+    .product-item .product-item-info .product-item-photo {
+        margin-bottom: 16px;
+    }
+    .product-image-container {
+        display: inline-block;
+        max-width: 100%;
+        background: $bg-light;
+    }
+    .product-image-wrapper {
+        height: 0;
+        display: block;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+    .product-image-photo {
+        text-align: center;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: auto;
+        max-width: 100%;
+    }
+    //Reviews
+    .reviews-actions {
+        @include make-flex();
+        @include justify-content(space-between);
+        .action.add {
+            @include font-icon('\ea7a');
+            font-size: 0;
+            &:before {
+                font-size: $default-font-size;
+            }
+        }
+    }
+    //Price
+    .price-from {
+        margin-bottom: 0;
+    }
+    .price-to {
+        margin-bottom: 0;
+    }
+    // Description
+    .product-item-description {
+        margin-bottom: 12px;
+    }
+    // Actions
+    .actions-primary {
+        .action {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 0;
+            padding: 9px;
+        }
+        .action span {
+            display: none;
+        }
+    }
+    .product-item .product-item-actions {
+        @include justify-content(flex-start);
+    }
+}

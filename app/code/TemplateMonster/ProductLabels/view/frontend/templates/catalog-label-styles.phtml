@@ -1,0 +1,98 @@
+<?php
+/**
+ * Copyright © 2016 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+$labelHelper = $this->helper('TemplateMonster\ProductLabels\Helper\LabelOutput');
+if($labelHelper->getCollection()):
+?>
+
+<style>
+    <?php
+    // CATEGORY LABELS
+    ?>
+    .columns .product-item,
+    .columns .product-item-info{
+        position: relative;
+    }
+
+    .columns .product-item .smart-labels {
+        display: none;
+    }
+
+    .columns .product-item .smart-labels .smart-label {
+        display: inline-block;
+        position: absolute;
+        overflow: hidden;
+        box-sizing: border-box;
+        z-index: 10;
+    }
+
+    <?php foreach ($labelHelper->getCollection() as $smartLabel):
+
+        /*Text label*/
+        if ($smartLabel->getCategoryLabelType() == 'text'):
+            $position = $labelHelper->getLabelPosition($smartLabel->getCategoryTextLabelPosition());
+        ?>
+            .smart-labels .label-text.label-id-<?php echo $smartLabel->getSmartLabelId(); ?> {
+            <?php if ($smartLabel->getCategoryTextBackground()): ?>
+                background-image: url(<?php echo $labelHelper->getMedia().$smartLabel->getCategoryTextBackground() ?>);
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryTextFontsize()): ?>
+                font-size: <?php echo $smartLabel->getCategoryTextFontsize(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryTextFontcolor()): ?>
+                color: <?php echo $smartLabel->getCategoryTextFontcolor(); ?>;
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryTextWidth()): ?>
+                width: <?php echo $smartLabel->getCategoryTextWidth(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryTextHeight()): ?>
+                height: <?php echo $smartLabel->getCategoryTextHeight(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryTextPosition()): ?>
+                text-align: <?php echo $smartLabel->getCategoryTextPosition(); ?>;
+            <?php endif;?>
+                top: <?php echo $position['top'] ?>;
+                right: <?php echo $position['right'] ?>;
+                bottom: <?php echo $position['bottom'] ?>;
+                left: <?php echo $position['left'] ?>;
+                transform: translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+                -webkit-transform:  translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+            }
+            <?php if ($smartLabel->getCategoryTextCss()): ?>
+            <?php echo $smartLabel->getCategoryTextCss() ?>
+            <?php endif;?>
+
+        /*Image Label*/
+        <?php elseif ($smartLabel->getCategoryLabelType() == 'image'): ?>
+            <?php $position = $labelHelper->getLabelPosition($smartLabel->getCategoryImagePosition()); ?>
+            .smart-labels .label-image.label-id-<?php echo $smartLabel->getSmartLabelId(); ?> {
+
+
+            <?php if ($smartLabel->getCategoryImageWidth()): ?>
+                width: <?php echo $smartLabel->getCategoryImageWidth(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getCategoryImageHeight()): ?>
+                height: <?php echo $smartLabel->getCategoryImageHeight(); ?>px;
+            <?php endif;?>
+                top: <?php echo $position['top'] ?>;
+                right: <?php echo $position['right'] ?>;
+                bottom: <?php echo $position['bottom'] ?>;
+                left: <?php echo $position['left'] ?>;
+                transform: translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+                -webkit-transform:  translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+            }
+            .smart-labels .label-image. img {
+                max-width: 100%;
+                vertical-align: top;
+            }
+            <?php if ($smartLabel->getCategoryImageCss()): ?>
+            <?php echo $smartLabel->getCategoryImageCss() ?>
+            <?php endif;?>
+        <?php endif;
+    endforeach;?>
+</style>
+<?php endif; ?>
+

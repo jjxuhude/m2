@@ -1,0 +1,17 @@
+#themeupdater_general .loader {
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  left: 12px;
+  vertical-align: top;
+  margin-right: 20px;
+  opacity: 0; }
+#themeupdater_general .messages {
+  display: inline-block;
+  padding-top: 5px; }
+  #themeupdater_general .messages.positive {
+    color: #5ebb60; }
+  #themeupdater_general .messages.negative {
+    color: #d53749; }
+
+/*# sourceMappingURL=module.css.map */

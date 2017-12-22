@@ -1,0 +1,13 @@
+@media (min-width: $screen-sm-min) {
+    .form.search.advanced{
+        .group{
+            &.range{
+                @include make-flex();
+                @include make-row();
+                .field{
+                    @include make-col();
+                }
+            }
+        }
+    }
+}

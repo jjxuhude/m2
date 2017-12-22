@@ -1,0 +1,89 @@
+//
+//  Table
+//  ---------------------------------------------
+
+table:not(.totals){
+    &.table{
+        width: 100%;
+
+        tr.row{
+            display: table-row;
+            margin: 0;
+
+            .col{
+                padding-right: 0;
+            }
+        }
+
+        th, td{
+            padding: 10px;
+            &:first-child{
+                border-left: none;
+            }
+
+            @media (min-width: $screen-sm-min){
+                border-left: solid 1px $border-color;
+            }
+        }
+        thead th{
+            font-weight: 700;
+            border-top: solid 1px $border-color;
+            border-bottom: solid 1px $border-color;
+        }
+        tbody tr:nth-child(odd){
+            @media (min-width: $screen-sm-min){
+                background: $bg-dark;
+                &:first-child:last-child{
+                    background: transparent;
+                }
+            }
+        }
+
+        &:not(#product-comparison){
+            @media (max-width: $screen-sm-min - 1) {
+                th{
+                    display: none;
+                }
+
+                td{
+                    width: 100%;
+                    padding: 10px 0;
+                    display: block;
+                    &:before{
+                        font-weight: bold;
+                        display: block;
+                        border-bottom: solid 1px $border-color;
+                        content: attr(data-th);
+                        margin-bottom: 10px;
+                    }
+
+                    &:first-child{
+                        background: $bg-dark;
+                    }
+                }
+            }
+        }
+    }
+    &.table-bordered {
+        border-top: 2px solid $primary;
+        border-left: 1px solid $border-color;
+        th,
+        td {
+            border-right: 1px solid $border-color;
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    &.data-table {
+        width: 100%;
+        th,
+        td {
+            padding: 20px;
+            vertical-align: middle;
+        }
+        th {
+            background: $bg-dark;
+            text-transform: uppercase;
+            color: $black;
+        }
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="TemplateMonster_ProductLabels::css/product-labels-form.css"/>
+        <css src="jquery/colorpicker/css/colorpicker.css" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="TemplateMonster\ProductLabels\Block\Adminhtml\ProductLabel\Edit" name="product_label_page_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="TemplateMonster\ProductLabels\Block\Adminhtml\ProductLabel\Edit\Tabs"
+                   name="product_label_page_edit_tabs">
+                <block class="TemplateMonster\ProductLabels\Block\Adminhtml\ProductLabel\Edit\Tab\Main"
+                       name="product_label_page_edit_tab_main"/>
+                <block class="TemplateMonster\ProductLabels\Block\Adminhtml\ProductLabel\Edit\Tab\Image"
+                       name="product_label_page_edit_tab_image"/>
+                <block class="TemplateMonster\ProductLabels\Block\Adminhtml\ProductLabel\Edit\Tab\Condition"
+                       name="product_label_page_edit_tab_condition"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">product_label_page_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">images_section</argument>
+                    <argument name="block" xsi:type="string">product_label_page_edit_tab_image</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">condition_section</argument>
+                    <argument name="block" xsi:type="string">product_label_page_edit_tab_condition</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template"
+                   template="TemplateMonster_ProductLabels::productLabel/admin-config-form.phtml"
+                   name="product.label.colorpicker"/>
+        </referenceContainer>
+    </body>
+</page>

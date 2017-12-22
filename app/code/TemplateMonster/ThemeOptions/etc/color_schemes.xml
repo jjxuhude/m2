@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:TemplateMonster_ThemeOptions:etc/color_schemes.xsd">
+    <website code="base">
+        <scheme id="compshop" label="CompShop" color="#1e88e5">
+            <param name="primary_color" value="#1e88e5" />
+            <param name="secondary_color" value="#000000" />
+            <param name="body_background_color" value="#ffffff" />
+            <param name="header_background_color" value="#ffffff" />
+            <param name="footer_background_color" value="#292929" />
+            <param name="primary_font_color" value="#777777" />
+            <param name="primary_link_color" value="#1e88e5" />
+            <param name="primary_title_color" value="#000000" />
+        </scheme>
+    </website>
+</config>

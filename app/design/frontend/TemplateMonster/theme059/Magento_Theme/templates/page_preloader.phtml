@@ -1,0 +1,44 @@
+<style>
+    #page-preloader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+    }
+</style>
+
+<script type="text/javascript">
+    window.onload = function() {
+
+        function fadeOut(el){
+            el.style.opacity = 1;
+
+            var last;
+            var tick = function() {
+                el.style.opacity = +el.style.opacity - (new Date() - last) / 600;
+                last = +new Date();
+
+                if (+el.style.opacity > 0) {
+                    (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 100);
+                } else{
+                    el.style.display = "none";
+                }
+            };
+            tick();
+        }
+
+        var pagePreloaderId = document.getElementById("page-preloader");
+        setTimeout(
+            function () {
+                fadeOut(pagePreloaderId)
+            }, 1000);
+    };
+</script>
+
+<div id="page-preloader">
+    <div class="spinner">
+        <div class='uil-clock-css' style='transform:scale(0.6);'><div class="clock"></div><div class="ptr1"></div><div class="ptr2"></div></div>
+    </div>
+</div>

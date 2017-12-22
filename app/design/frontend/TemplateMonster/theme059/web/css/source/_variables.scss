@@ -1,0 +1,88 @@
+//
+// Grid system
+// --------------------------------------------------
+$column-count: 12;
+$column-width: 107px;
+$gutter-width: 40px;
+$row-ws: 0;
+$container-xs: 300px;
+$container-sm: 720px+$gutter-width;
+$container-md: 940px+$gutter-width;
+$container-lg: 1150px+$gutter-width;
+$container-xl: 1340px+$gutter-width;
+$container-xxl: $column-count*$column-width+$gutter-width*$column-count;
+// Layouts
+$layout-boxed-width: 1920px;
+// Resolutions
+$screen-xs-min: 480px;
+$screen-sm-min: 768px;
+$screen-md-min: 992px;
+$screen-lg-min: 1200px;
+$screen-xl-min: 1400px;
+$screen-xxl-min: 1800px;
+$screen-mob-min: $screen-md-min; // break-point for mobile styles
+// Fonts
+$default-font-family: 'Open sans',
+Arial,
+Helvetica,
+sans-serif;
+$default-font-weight: 400;
+$default-font-size: 14px;
+$default-line-height: 1.5em;
+// Icons
+$material-icons: 'Material Icons';
+$icon-mini: 'Nucleo Mini';
+$icon-outline: 'Nucleo Outline';
+$default-icon-family: 'Nucleo Mini';
+$fa: 'FontAwesome';
+$iconfont: "iconfont";
+// Colors
+$white: #fff;
+$black: #000;
+$default: #777777;
+$allow: #3bb141;
+$denied: #ff5555;
+$attention: #ff5555;
+$bg-light: #f5f5f5;
+$bg-dark: #ebeaea;
+$primary: #1e88e5;
+$accent: #000000;
+$text-dark: #333333;
+$text-light: #777777;
+$text-lightest: #b4b4b4;
+$text-color: #7d7d7d;
+$unactive: #999999;
+$review-star: #ffa800;
+$yellow:#fff100;
+$border-color: #e1e1e1;
+$footer-border-color:#535353;
+$footer-background: #212121;
+// Smart header vars
+$sm-header-main-color: $primary;
+$sm-header-contrast-color: $white;
+$sm-header-text-color: $text-light;
+$sm-header-hover-color: $primary;
+$sm-header-panel-height: 56px;
+$sm-header-item-fontsize: 14px;
+$sm-header-item-lineheight: 16px;
+$sm-header-item-padding: 17px;
+$sm-header-item-border: 1px solid $border-color;
+$sm-header-item-bg-1: #f1f1f1;
+$sm-header-item-bg-2: #e7e7e7;
+$rd-navbar-panel-height: 56px;
+$default-header-shadow: 0 3px 27px rgba(0, 0, 0, .24);
+//Indents
+$indent-base: 2rem;
+$indent-large: $indent-base * 2;
+$indent-small: $indent-base / 2;
+//Links
+$link-regular: $primary;
+$link-hover: $text-dark;
+$link-active: $text-light;
+$link-alt: $default;
+//Transition
+$default-transition: .3s ease;
+//Inputs
+$input-bg-color: $white;
+// background images
+$cms-index-index-icons: "../images/home-cate-icons.png";

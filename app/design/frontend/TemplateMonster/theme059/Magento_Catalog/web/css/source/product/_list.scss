@@ -1,0 +1,173 @@
+//
+// catalog banner
+//
+.catetory-banner {
+    margin-bottom: 40px;
+    @media(max-width: $screen-sm-min - 1) {
+        padding-bottom: 60%;
+    }
+    @media(min-width:$screen-sm-min) and (max-width:$screen-lg-min - 1) {
+        padding-bottom: 35%;
+    }
+    @media(min-width:$screen-lg-min) and (max-width:$screen-xl-min - 1) {
+        padding-bottom: 30%;
+    }
+    @media(min-width:$screen-xl-min) {
+        padding-bottom: 25%;
+    }
+}
+
+//
+//  Generic Grid/List Item
+//  ---------------------------------------------
+.products-grid,
+.products-list {
+    .product-item {
+        .quick-view-button {
+            float: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        // Image
+        .product-image-container {
+            display: inline-block;
+            max-width: 100%;
+        }
+        .product-item-photo {
+            background: $bg-light;
+            display: block;
+            padding: 8px;
+            text-align: center;
+        }
+        .product-image-wrapper {
+            display: block;
+            height: 0;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .product-image-photo {
+            bottom: 0;
+            display: block;
+            height: auto;
+            left: 0;
+            margin: auto;
+            max-width: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        // Price
+        .price-box {
+            @include price-box; // _mixins.scss
+            font-size: 20px;
+            line-height: 1;
+            font-weight: 700;
+            .price-as-configured {
+                margin-bottom: 0;
+                .price-container {
+                    margin-bottom: 1em;
+                }
+            }
+        }
+        .map-show-info {
+            font-size: 14px;
+            line-height: 14px;
+            &:before {
+                content: "";
+                display: block;
+                font-size: 0;
+                line-height: 0;
+                height: 0;
+            }
+        }
+        //Name
+        .product-item-name {
+            display: block;
+            width: 60%;
+            font-size: 14px;
+            line-height: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            a {
+                color: $text-dark;
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+        //Details
+        .product-item-description p {
+            margin-bottom: 0;
+        }
+        //Reviews
+        .product-reviews-summary {
+            @include make-flex;
+        }
+        .rating-summary {
+            .label {
+                display: none;
+            }
+        }
+        .reviews-actions {
+            .view {
+                margin-right: 12px;
+            }
+        }
+        //btn group
+        .product-item-inner {
+            margin-top: 10px;
+        }
+        // Swatches
+        .swatch-option {
+            margin-bottom: 10px;
+            +.swatch-option {
+                margin-left: 5px;
+            }
+            &.text {
+                padding: 2px;
+            }
+        }
+        //Actions
+        .product-item-actions {
+            margin-top: 0;
+            @include make-flex();
+            @include flex-wrap(wrap);
+            .actions-secondary {
+                @include make-flex();
+                @include justify-content(center);
+                .action {
+                    background-color: transparent;
+                    font-size: 18px;
+                    line-height: 40px;
+                    color: $default;
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 0;
+                    border: none;
+                    background: $bg-dark;
+                    text-align: center;
+                    margin-left: 8px;
+                    &:hover {
+                        color: $white;
+                        background: $text-dark;
+                        animation: hvr-push .3s ease 1;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.products-grid {
+    .product-item {
+        text-align: left;
+    }
+    .product-reviews-summary .reviews-actions {
+        display: none;
+    }
+}

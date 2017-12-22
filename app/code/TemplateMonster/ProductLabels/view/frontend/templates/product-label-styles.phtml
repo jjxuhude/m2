@@ -1,0 +1,94 @@
+<?php
+/**
+ * Copyright © 2016 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+$labelHelper = $this->helper('TemplateMonster\ProductLabels\Helper\LabelOutput');
+?>
+
+<style>
+<?php
+// PRODUCT LABELS
+?>
+.catalog-product-view .product.media {
+    position: relative;
+}
+
+.catalog-product-view .smart-labels .smart-label {
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    z-index:9;
+}
+
+<?php
+if($labelHelper->getProduct()->getAppliedRules()):
+foreach ($labelHelper->getProduct()->getAppliedRules() as $productId => $sortOrder):
+    $smartLabel = $labelHelper->getCollection()->getItemById($productId);
+
+    /*Text label*/
+    if ($smartLabel->getProductLabelType() == 'text'):
+        $position = $labelHelper->getLabelPosition($smartLabel->getProductTextLabelPosition()); ?>
+
+        .smart-labels .label-text.label-id-<?php echo $smartLabel->getSmartLabelId(); ?> {
+            <?php if ($smartLabel->getProductTextBackground()): ?>
+                background-image: url(<?php echo $labelHelper->getMedia().$smartLabel->getProductTextBackground() ?>);
+            <?php endif;?>
+            <?php if ($smartLabel->getProductTextFontsize()): ?>
+                font-size: <?php echo $smartLabel->getProductTextFontsize(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getProductTextFontcolor()): ?>
+                color: <?php echo $smartLabel->getProductTextFontcolor(); ?>;
+            <?php endif;?>
+            <?php if ($smartLabel->getProductTextWidth()): ?>
+                width: <?php echo $smartLabel->getProductTextWidth(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getProductTextHeight()): ?>
+                height: <?php echo $smartLabel->getProductTextHeight(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getProductTextPosition()): ?>
+                text-align: <?php echo $smartLabel->getProductTextPosition(); ?>;
+            <?php endif;?>
+            top: <?php echo $position['top'] ?>;
+            right: <?php echo $position['right'] ?>;
+            bottom: <?php echo $position['bottom'] ?>;
+            left: <?php echo $position['left'] ?>;
+            transform: translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+            -webkit-transform:  translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+        }
+        <?php if ($smartLabel->getProductTextCss()): ?>
+        <?php echo $smartLabel->getProductTextCss() ?>
+        <?php endif;?>
+
+    /*Image Label*/ 
+    <?php elseif ($smartLabel->getProductLabelType() == 'image'): ?>
+        <?php $position = $labelHelper->getLabelPosition($smartLabel->getProductImagePosition()); ?>
+        .smart-labels .label-image.label-id-<?php echo $smartLabel->getSmartLabelId(); ?> {
+
+
+            <?php if ($smartLabel->getProductImageWidth()): ?>
+                width: <?php echo $smartLabel->getProductImageWidth(); ?>px;
+            <?php endif;?>
+            <?php if ($smartLabel->getProductImageHeight()): ?>
+                height: <?php echo $smartLabel->getProductImageHeight(); ?>px;
+            <?php endif;?>
+            top: <?php echo $position['top'] ?>;
+            right: <?php echo $position['right'] ?>;
+            bottom: <?php echo $position['bottom'] ?>;
+            left: <?php echo $position['left'] ?>;
+            transform: translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+            -webkit-transform:  translate(-<?php echo $position['left_transform'] ?>, -<?php echo $position['top_transform'] ?>);
+        }
+        .smart-labels .label-image. img {
+            max-width: 100%;
+            vertical-align: top;
+        }
+        <?php if ($smartLabel->getProductImageCss()): ?>
+        <?php echo $smartLabel->getProductImageCss() ?>
+        <?php endif;?>
+    <?php endif;
+endforeach;
+endif;
+?>
+</style>

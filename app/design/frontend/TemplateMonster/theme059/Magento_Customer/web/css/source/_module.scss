@@ -1,0 +1,415 @@
+
+.form-create-account,
+.form-edit-account,
+.form-address-edit,
+.form-login,
+.block-addresses-list,
+.form-newsletter-manage,
+.downloadable-customer-products,
+.my-reviews-table__wrapper,
+.account-billing-agreements__wrapper{
+    .fieldset{
+        margin-bottom: 16px;
+    }
+
+    .actions-toolbar{
+        @include make-flex;
+        @include justify-content(space-between);
+        @include flex-direction(column);
+
+        @media (min-width: $screen-sm-min){
+            @include flex-direction(row-reverse);
+            @include align-items(center);
+            @include justify-content(flex-end);
+        }
+
+        .primary + .secondary{
+            margin: 8px 0 0;
+            @media (min-width: $screen-sm-min){
+                margin: 0 8px 0 0;
+            }
+        }
+    }
+}
+
+.form-edit-account,
+.form-create-account{
+    .fieldset .field{
+        &.password{
+            div.mage-error{
+                top: calc(100% - 40px);
+            }
+        }
+        #password-strength-meter-container{
+            font-size: 12px;
+            line-height: 1;
+            padding-top: 4px;
+        }
+    }
+}
+.form-login{
+    .primary{
+        margin-bottom: 4px;
+    }
+}
+.block-new-customer{
+    a.create{
+        @include button-block;
+        @include button-block__primary;
+    }
+}
+
+//
+//  Account main
+//  _____________________________________________
+
+body.account{
+    //Message styling
+    .main .message.info.empty{
+        color: #31708f;
+        background-color: #d9edf7;
+        padding: 0.8rem 3.5rem 0.8rem 1rem;
+        margin-bottom: 30px;
+        border: 1px solid #bce8f1;
+        border-radius: 2px;
+        position: relative;
+        font-size: 14px;
+    }
+
+    //Block styling
+    .block-title{
+        position: relative;
+        .action{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    //Box styling
+    .box{
+        address{
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.sidebar .account-navigation{
+    margin-bottom: 40px;
+    @media (min-width: $screen-mob-min){
+        margin-bottom: 68px;
+    }
+
+    .block-title{
+        @media (min-width: $screen-mob-min){
+            padding-bottom: 1.24em;
+            border-bottom: 1px solid $border-color;
+            margin-bottom: 1.4em;
+        }
+    }
+    a{
+        color: $primary;
+        &:hover{
+            color: $text-dark;
+        }
+
+        @media (max-width: $screen-md-min - 1){
+            font-size: 16px;
+            line-height: 18px;
+            font-weight: 600;
+        }
+    }
+    li{
+        @media (max-width: $screen-md-min - 1){
+            margin-top: 12px;
+        }
+    }
+    li.current strong{
+        font-weight: 700;
+        color: $primary;
+
+        @media (max-width: $screen-md-min - 1){
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+}
+
+.block-dashboard-orders,
+.block-dashboard-info,
+.block-dashboard-addresses,
+.block-reviews-dashboard,
+.customer-account-edit .form-edit-account,
+.block-addresses-default,
+.block-addresses-list,
+.custome-downloadable-products__wrapper,
+.orders-history__wrapper,
+.form-newsletter-manage,
+.my-reviews-table__wrapper,
+.account-billing-agreements__wrapper{
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    @media (min-width: $screen-md-min){
+        padding: 32px 30px 40px;
+        margin-bottom: 40px;
+    }
+
+    .block-title,
+    .legend{
+        color: $text-dark;
+        font-size: 22px;
+        line-height: 1;
+        margin-bottom: 29px;
+
+        > strong,
+        > span{
+            font-weight: 700;
+        }
+
+        a.action{
+            font-size: 14px;
+            line-height: 1;
+            font-weight: 700;
+            top: 50%;
+            margin-top: -7px;
+            padding: 0;
+            &:before{
+                content: '';
+                display: none;
+            }
+
+            span{
+                display: block;
+            }
+        }
+    }
+
+    .table-caption{
+        display: none;
+    }
+}
+
+.block-dashboard-info,
+.block-dashboard-addresses,
+.box-billing-address,
+.box-address-shipping{
+    .row{
+        @media (min-width: $screen-md-min) {
+            > div{
+                margin-bottom: 0;
+            }
+            @include align-items(stretch);
+        }
+    }
+
+    .box,
+    &.box{
+        background: $bg-light;
+        padding: 20px 20px 10px 25px;
+        margin-bottom: 20px;
+        position: relative;
+
+        @media (min-width: $screen-mob-min) {
+            height: 100%;
+        }
+    }
+
+    .box-title{
+        font-size: 18px;
+        font-weight: 700;
+        color: $primary;
+        margin-bottom: 22px;
+    }
+
+    .box-content{
+        line-height: 2;
+
+        p{
+            margin-bottom: 18px;
+        }
+    }
+
+    .box-actions{
+        .action.edit{
+            position: absolute;
+            top: 22px;
+            right: 15px;
+            background-color: transparent;
+            font-size: 14px;
+            line-height: 1;
+            color: $text-lightest;
+
+            &:hover{
+                color: $primary;
+            }
+        }
+
+        a:not(.edit){
+            @include button-block;
+            @include button-block__primary;
+        }
+    }
+}
+
+.block-addresses-list{
+    .block-content{
+        background: $bg-light;
+        padding: 20px 20px 25px 25px;
+        margin-bottom: 25px;
+        position: relative;
+
+        @media (min-width: $screen-mob-min) {
+            height: 100%;
+        }
+
+        .action.edit,
+        .action.delete{
+            position: absolute;
+            top: 22px;
+            right: 15px;
+            background-color: transparent;
+            font-size: 14px;
+            line-height: 1;
+            color: $text-lightest;
+
+            &:hover{
+                color: $primary;
+            }
+        }
+        .action.delete{
+            right: 35px;
+        }
+    }
+}
+
+.block-reviews-dashboard{
+    .items li{
+        padding: 9px 16px;
+        @include make-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        &:nth-child(odd){
+            background: $bg-dark;
+        }
+    }
+}
+
+.block-dashboard-orders .table-order-items{
+    td, th{
+        @media (min-width: $screen-xl-min){
+            padding: 9px 20px;
+        }
+    }
+    td.actions{
+        @media (min-width: $screen-md-min) {
+            .view{
+                float: left;
+            }
+            .order{
+                float: right;
+            }
+        }
+
+        a{
+            font-weight: 700;
+
+            &.view{
+                padding-right: 8px;
+            }
+        }
+    }
+}
+
+.sales-order-history .actions-toolbar a.back{
+    @include button-block__back;
+}
+
+
+// Email to Friend
+//-----------------------------------
+
+#add-recipient-button{
+    margin-bottom: 1em;
+}
+
+// Popup Authentication
+//-----------------------------------
+
+.popup-authentication {
+    .block-authentication {
+        @include make-flex;
+        @include flex-direction(column);
+        @include justify-content(flex-start);
+        @include align-items(stretch);
+
+        @media (min-width: $screen-mob-min){
+            @include flex-direction(row);
+            @include justify-content(space-between);
+        }
+    }
+
+    .block[class],
+    .form-login,
+    .fieldset,
+    .block-content {
+        @include make-flex;
+        @include flex-direction(column);
+    }
+
+    .block {
+        @media (min-width: $screen-mob-min){
+            @include flex-basis(50%);
+        }
+
+        &:first-child{
+            padding: 0 0 32px 0;
+            @media (min-width: $screen-mob-min){
+                padding: 16px 32px 16px 0;
+            }
+        }
+
+        & + .block {
+            border-top: 1px solid $border-color;
+            padding: 32px 0;
+
+            @media (min-width: $screen-mob-min){
+                border-top: none;
+                border-left: 1px solid $border-color;
+                padding: 16px 0 16px 32px;
+            }
+        }
+    }
+
+    .block-new-customer{
+        .block-title {
+            margin-bottom: 8px;
+        }
+        .block-content{
+            ul{
+                margin-bottom: 32px;
+            }
+            li{
+                list-style: disc inside;
+            }
+        }
+    }
+
+    .block-title{
+        font-size: 18px;
+        font-weight: 700;
+        color: $primary;
+        margin-bottom: 22px;
+    }
+
+    .actions-toolbar {
+        .action-register{
+            @include button-block;
+            @include button-block__primary;
+        }
+        .action-login{
+            @include button-block__primary;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © 2016 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+
+<?php
+$labelHelper = $this->helper('TemplateMonster\ProductLabels\Helper\LabelOutput');
+$dataHelper = $this->helper('TemplateMonster\ProductLabels\Helper\Data');
+?>
+
+<?php if ($labelHelper->getProduct()->getAppliedRules()): ?>
+    <div class="smart-labels" data-mage-init='{"smartLabels": {"productContainer" : "<?php echo $dataHelper->getProductContainer() ?>"}}'>
+        <?php
+        foreach ($labelHelper->getProduct()->getAppliedRules() as $productId => $sortOrder) :
+            $smartLabel = $labelHelper->getCollection()->getItemById($productId);
+            if ($smartLabel->getProductLabelStatus() == 'enable'):
+                // Product Text Label
+                if ($smartLabel->getProductLabelType() == 'text'):
+                    if ($smartLabel->getProductTextComment()):
+                    echo '<span class="smart-label label-text label-id-'
+                            . $smartLabel->getSmartLabelId() . ' '
+                            . $smartLabel->getProductTextContainer() . '">'
+                            . $labelHelper->replaceString($smartLabel->getProductTextComment())
+                        .'</span>';
+                    endif;
+
+                // Product Image Label
+                elseif ($smartLabel->getProductLabelType() == 'image'):
+                    if ($smartLabel->getProductImageLabel()):
+                    echo '<span class="smart-label label-image label-id-'
+                            . $smartLabel->getSmartLabelId() . ' '
+                            . $smartLabel->getProductImageContainer() . '">
+                            <img src="'. $labelHelper->getMedia().$smartLabel->getProductImageLabel() . '" alt="" />'
+                        .'</span>';
+                    endif;
+                endif;
+            endif;
+        endforeach; ?>
+    </div>
+<?php endif; ?>

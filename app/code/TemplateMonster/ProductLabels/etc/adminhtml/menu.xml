@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * Copyright © 2015 TemplateMonster. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <update id="TemplateMonster_Base::modules" 
+            title="Template Monster" 
+            module="TemplateMonster_ProductLabels" 
+            sortOrder="30" 
+            resource="TemplateMonster_Base::modules" />
+        <add id="TemplateMonster_ProductLabels::productlabels"
+             title="Smart Product Labels"
+             module="TemplateMonster_ProductLabels"
+             sortOrder="10"
+             resource="TemplateMonster_ProductLabels::productlabels"
+             parent="TemplateMonster_Base::modules"/>
+        <add id="TemplateMonster_ProductLabels::productlabels_grid"
+             title="Smart Product Labels"
+             module="TemplateMonster_ProductLabels"
+             sortOrder="0"
+             parent="TemplateMonster_ProductLabels::productlabels"
+             action="labelproduct/index/index"
+             resource="TemplateMonster_ProductLabels::productlabels_grid"/>
+    </menu>
+</config>

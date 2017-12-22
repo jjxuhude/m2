@@ -1,0 +1,271 @@
+//
+//  Form styles
+//  _____________________________________________
+
+
+//Form layout
+.field{
+    position: relative;
+    padding: 8px 0;
+
+    &.additional,
+    &.choice{
+        margin-bottom: 0;
+    }
+    &.note{
+        margin-bottom: 16px;
+    }
+
+    .control{
+        input{
+            background: $input-bg-color;
+        }
+    }
+
+    &.custom-label{
+        padding: 8px 0;
+        transition: $default-transition;
+
+        .label{
+            position: absolute;
+            z-index: 2;
+            top: 21px;
+            left: 20px;
+            pointer-events: none;
+            transition: $default-transition;
+            @include transform-origin(0 0);
+        }
+
+        &.focus .label{
+            top: 6px;
+            @include transform(scale(0.7));
+            opacity: 0;
+        }
+    }
+
+    .checkbox{
+        margin: .75rem .5rem 0 0;
+    }
+
+    .field-tooltip-action{
+        outline: none !important;
+    }
+
+    &.required{
+        div.mage-error{
+            position: absolute;
+            top: calc(100% + 4px);
+            left: 0;
+            right: 0;
+            padding-left: 0;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .control{
+            position: relative;
+
+            &._with-tooltip input.input-text + div.mage-error{
+                top: auto;
+                bottom: 24px;
+            }
+
+            .field-tooltip.toggle{
+                top: -25px;
+            }
+        }
+
+        input.input-text{
+            transition: margin-bottom $default-transition;
+
+            &.mage-error{
+                margin-bottom: 20px;
+            }
+
+            &#password.mage-error{
+                margin-bottom: 30px;
+            }
+        }
+
+        &.comment textarea.input-text{
+            &.mage-error{
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+.fieldset{
+    .actions-toolbar{
+        padding-top: 16px;
+    }
+}
+
+.field.required > .label:not(.admin__field-label):after,
+.field._required > .label:not(.admin__field-label):after,
+.fieldset > .field.required > .label:not(.admin__field-label):after,
+.fieldset > .fields > .field.required > .label:not(.admin__field-label):after {
+    color: $denied;
+    content: "*";
+    font-size: 12px;
+    margin: 0 0 0 5px;
+}
+
+//Typography
+.legend,
+legend{
+    font-size: 1rem;
+    font-weight: 600;
+    +br{
+        display: none;
+    }
+}
+
+.input-text,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select,
+textarea{
+    display: block;
+    width: 100%;
+    padding: 13px 18px;
+    font-size: inherit;
+    min-height: 2em;
+    vertical-align: baseline;
+    background: $input-bg-color;
+    border: 1px solid $border-color;
+    border-radius: 0;
+
+    &.mage-error{
+        border-color: red;
+        font-style: normal;
+    }
+
+    &::-webkit-input-placeholder       {opacity: 1; transition: opacity $default-transition;}
+    &::-moz-placeholder                {opacity: 1; transition: opacity $default-transition;}
+    &:-moz-placeholder                 {opacity: 1; transition: opacity $default-transition;}
+    &:-ms-input-placeholder            {opacity: 1; transition: opacity $default-transition;}
+    &:focus::-webkit-input-placeholder {opacity: .5; transition: opacity $default-transition;}
+    &:focus::-moz-placeholder          {opacity: .5; transition: opacity $default-transition;}
+    &:focus:-moz-placeholder           {opacity: .5; transition: opacity $default-transition;}
+    &:focus:-ms-input-placeholder      {opacity: .5; transition: opacity $default-transition;}
+}
+
+select[multiple="multiple"]{
+    padding: 0;
+    min-height: 0;
+}
+
+html:not(.mobile) .sm-desktop select{
+    box-sizing: content-box;
+}
+
+textarea{
+    max-width: 100%;
+}
+
+p.required{
+    color: $denied;
+}
+
+//Inline form
+.form-inline{
+    @include make-flex();
+    .control{
+        input,
+        select,
+        textarea{
+            width: auto;
+        }
+    }
+}
+
+// Checkbox
+.radio,
+input[type="checkbox"],
+input[type="radio"]{
+    display: inline-block;
+    width: auto;
+}
+
+.field.choice{
+    position: relative;
+    font-size: 1rem;
+    line-height: 1rem;
+
+    > input[type=checkbox],
+    > input[type=radio]{
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+    }
+
+    > input[type=checkbox],
+    > input[type=radio]{
+        + .label {
+            &:before{
+                display: inline-block;
+                font-size: 16px;
+                line-height: 1rem;
+                width: 18px;
+                height: 18px;
+                font-family: $default-icon-family;
+                font-style: normal;
+                vertical-align: sub;
+                color: $primary;
+                text-align: center;
+                padding-right: 3px;
+            }
+
+            span{
+                display: inline-block;
+            }
+        }
+    }
+
+    > input[type=checkbox] + .label{
+        &:before{
+            @include font-icon__pseudo('\e835', $material-icons);
+        }
+    }
+    > input[type=checkbox]:checked + .label:before{
+        @include font-icon__pseudo('\e834', $material-icons);
+    }
+    > input[type=checkbox]:disabled:checked + .label:before{
+        @include font-icon__pseudo('\e834', $material-icons);
+        pointer-events: none;
+        opacity: .6;
+    }
+    > input[type=radio] + .label:before{
+        @include font-icon__pseudo('\e836', $material-icons);
+    }
+    > input[type=radio]:checked + .label:before{
+        @include font-icon__pseudo('\e837', $material-icons);
+    }
+    > input[type=checkbox]:disabled:checked + .label:before{
+        @include font-icon__pseudo('\e837', $material-icons);
+        pointer-events: none;
+        opacity: .6;
+    }
+    > input[type=checkbox],
+    > input[type=radio]{
+        &:disabled + .label:before{
+            pointer-events: none;
+            opacity: .6;
+        }
+    }
+}
+
+
+//
+//  Messages styles
+//  ---------------------------------------------
+
+.mage-error:not(input):not(textarea){
+    font-size: .8rem;
+    line-height:1.2rem;
+    font-style: italic;
+    color: red;
+}

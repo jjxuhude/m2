@@ -1,0 +1,157 @@
+"block_id","title","identifier","content","creation_time","update_time","is_active"
+"1","Footer column content 2","footer_col_2","<ul>
+    <li><a href=""{{store direct_url=""about-us""}}"">About Us</a></li>
+    <li><a href=""{{store direct_url=""customer-service""}}"">Customer Service</a></li>
+    <li><a href=""{{store url=""""}}template-settings"">Template Settings</a></li>
+</ul>
+
+","2016-03-12 05:30:44","2017-05-19 09:53:26","1"
+"4","Footer column content 3","footer_col_3","<h4>Why buy from us</h4>
+<div class=""footer-col-content"">
+    <ul>
+        <li><a href=""{{store url=""""}}shipping-delivery"">Shipping & Delivery</a></li>
+        <li><a href=""{{store url=""""}}secure-payment"">Secure payment</a></li>
+        <li><a href=""{{store url=""""}}support"">Support</a></li>
+        <li><a href=""{{store url=""""}}guarantee"">Guarantee</a></li>
+        <li><a href=""{{store url=""""}}terms-conditions"">Terms & Conditions</a></li>
+    </ul>
+</div>","2016-03-12 05:33:05","2017-05-19 10:02:26","1"
+"7","Footer column content 4","footer_col_4","<div class=""footer-col"">
+    <h4>My account</h4>
+    <div class=""footer-col-content"">
+        <ul>
+            <li><a href=""{{store url='customer/account/login/'}}"">Sign In</a></li>
+            <li><a href=""{{store url='checkout/cart/'}}"">View Cart</a></li>
+            <li><a href=""{{store url='wishlist/'}}"">My Wishlist</a></li>
+            <li><a href=""{{store url=""""}}faq"">FAQ</a></li>
+        </ul>
+    </div>
+</div>
+","2016-03-12 05:35:20","2017-05-19 07:03:39","1"
+"10","Megamenu 1st block img","mm-block-1_img","<img src=""{{view url='images/mm-cat-1.png'}}"" alt=""megamenu-image"" class=""mm-block_img"">","2017-05-15 13:57:10","2017-05-15 14:36:33","1"
+"11","Megamenu 1st block txt","mm-block-1_txt","<p class=""mm-block_txt"">
+	There’s a Windows Laptop for everyone, and if you’re struggling to find the right one for you we’ve done all the hard work for you. 
+</p>","2017-05-15 14:31:20","2017-05-15 14:36:44","1"
+"12","Megamenu 2nd block img","mm-block-2_img","<img src=""{{view url='images/mm-cat-2.png'}}"" alt=""megamenu-image"" class=""mm-block_img"">","2017-05-15 14:33:34","2017-05-15 14:33:34","1"
+"13","Megamenu 2nd block txt","mm-block-2_txt","<p class=""mm-block_txt"">
+	Whether you want to browse the internet or create graphic masterpieces, MacBooks provide the speed and performance you need to get the most from your project or relax with a game. 
+</p>","2017-05-15 14:34:14","2017-05-15 14:36:55","1"
+"14","Megamenu 3rd block img","mm-block-3_img","<img src=""{{view url='images/mm-cat-3.png'}}"" alt=""megamenu-image"" class=""mm-block_img"">","2017-05-15 14:34:55","2017-05-15 14:37:05","1"
+"15","Megamenu 3rd block txt","mm-block-3_txt","<p class=""mm-block_txt"">
+	Chromebooks are different from other laptops in that they run on Chrome OS, a web-focussed operating system that's designed to get you to your online content as fast as possible
+</p>","2017-05-15 14:35:31","2017-05-15 14:37:15","1"
+"16","Megamenu 4th block img","mm-block-4_img","<img src=""{{view url='images/mm-cat-4.png'}}"" alt=""megamenu-image"" class=""mm-block_img"">","2017-05-15 14:36:19","2017-05-15 14:37:25","1"
+"17","Megamenu 4th block txt","mm-block-4_txt","<p class=""mm-block_txt"">
+	Sleek and powerful, meticulously crafted and ultra-thin the Microsoft surface products are the ultimate Windows devices. 
+</p>","2017-05-15 14:38:25","2017-05-15 14:38:25","1"
+"18","Megamenu 5th block img","mm-block-5_img","<img src=""{{view url='images/mm-cat-5.png'}}"" alt=""megamenu-image"" class=""mm-block_img"">","2017-05-15 14:39:05","2017-05-15 15:35:34","1"
+"19","Megamenu 5th block txt","mm-block-5_txt","<p class=""mm-block_txt"">
+	A 2 in 1 combines the best bits of a laptop with a tablet, so you can work when you need to and play when you want. 
+</p>","2017-05-15 14:39:35","2017-05-15 14:39:35","1"
+"20","Megamenu 6th block img","mm-block-6_img","<a href=""{{store url}}mac.html"" class=""mm-block-2"">
+	<img src=""{{view url='images/mm-ban.jpg'}}"" alt=""megamenu-image"" class=""mm-block-2_img"">
+</a>","2017-05-15 15:02:10","2017-05-25 14:23:13","1"
+"21","Banners","banner_block","<div class=""banners"">
+	<ul class=""row"">
+		<li class=""banner-1 col-md-6"">
+			<div class=""banner"">
+				<img src=""{{view url='images/ban-1.jpg'}}"" alt=""banner-image"">
+				<div class=""banner-1_txt_wrap"">
+					<div class=""banner-1_txt wow bounceInLeft"" data-wow-delay='300' data-wow-offset='100'>
+						<span>get an extra<br>20% off<br>first order</span>
+						<a href=""{{store url}}mac.html"">Learn More</a>
+					</div>
+				</div>
+			</div>
+		</li>
+		<li class=""banner-2 col-md-6"">
+			<div class=""banner"">
+				<a href=""{{store url}}mac.html"">
+					<img src=""{{view url='images/ban-2_bg.jpg'}}"" alt=""banner-image"">
+					<img src=""{{view url='images/ban-2-1.png'}}"" alt=""banner-image"" class=""banner-2_img-2 wow fadeInLeft"" data-wow-delay='300' data-wow-offset='100'>
+					<div class=""banner-2_box-1 wow fadeInDown"" data-wow-delay='500' data-wow-offset='50'>
+						<span>big sale!<br>save 50% off</span>
+					</div>
+					<div class=""banner-2_box-2 wow fadeInRight"" data-wow-delay='400' data-wow-offset='50'>
+							<img src=""{{view url='images/ban-2-2.png'}}"" alt=""banner-image"">
+							<span>iPadS Air 2<br>MacBookS<br>and MORE...</span>
+					</div>
+				</a>				
+			</div>
+		</li>
+	</ul>
+</div>","2017-05-17 16:51:55","2017-05-25 14:24:24","1"
+"22","Additional information","add-info","<div class=""add-info"">
+	<ul class=""row"">
+		<li class=""col-lg-3 col-sm-6"">
+			<i class=""material-icons-local_phone""></i>
+			<div class=""add-info_txt"">
+				<h4><a href=""{{store url}}mac.html"">+3(800) 2345-6789</a></h4>
+				<span>Round-the-clock free hotline (24/7)</span>
+			</div>
+		</li>
+		<li class=""col-lg-3 col-sm-6"">
+			<i class=""material-icons-local_shipping""></i>
+			<div class=""add-info_txt"">
+				<h4><a href=""{{store url}}mac.html"">Free Shipping</a></h4>
+				<span>We provide you with fast and free delivery regardless of the product size and value.</span>
+			</div>
+		</li>
+		<li class=""col-lg-3 col-sm-6"">
+			<i class=""material-icons-replay""></i>
+			<div class=""add-info_txt"">
+				<h4><a href=""{{store url}}tablets2.html"">Return & Exchange</a></h4>
+				<span>You can return or exchange the item within 14 days.</span>
+			</div>
+		</li>
+		<li class=""col-lg-3 col-sm-6"">
+			<i class=""material-icons-thumb_up""></i>
+			<div class=""add-info_txt"">
+				<h4><a href=""{{store url}}networking.html"">Satisfaction Guarantee</a></h4>
+				<span>We are committed to your satisfaction with every order.</span>
+			</div>
+		</li>
+	</ul>
+</div>","2017-05-18 17:01:36","2017-05-25 14:45:09","1"
+"24","Footer column content 1","footer_col_1","<img src=""{{view url='images/logo_light.png'}}"" alt=""logo-light"" class=""logo-light"">
+<p class=""footer-info"">Get the power to do more your way. Whether you're a gamer, a designer, a student or parent, a writer, a dealmaker, or a Jack or Jill of all trades – at the CompShop you'll find the perfect PCs for all that you do. Explore our collection by type – and discover devices that can make every project your best.</p>","2017-05-19 07:12:39","2017-05-19 07:12:39","1"
+"25","Contact info","contact_info","<div class=""contact-info"">
+   	<address class=""contact-info_address"">
+   		<dl>
+   			<dt>
+   				<span class=""material-icons-room""></span>
+   			</dt>
+   			<dd>Glasgow D04 89GR</dd>
+   		</dl>
+		<dl>
+			<dt>
+				<span class=""material-icons-local_phone""></span>
+			</dt>
+			<dd>
+				<span class=""contact-info_tel""><a href=""tel:+3(800) 2345-6789"">+3(800) 2345-6789</a></span>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				<span class=""material-icons-access_time""></span>
+			</dt>
+			<dd>7 days a week from 9:00 am to 7:00 pm</dd>	
+		</dl>
+		<dl>
+			<dt>
+				<span class=""material-icons-email""></span>
+			</dt>
+			<dd>
+				<span class=""contact-info_mail""><a href=""mailto:info@demolink.org"">info@demolink.org</a></span>
+			</dd>
+		</dl>
+   	</address>
+</div>","2017-05-19 07:46:25","2017-05-19 10:40:34","1"
+"26","Payment","payment_1","<ul class=""list-inline list-payment"">
+	<li><span class=""icon icon-xs fa fa-cc-visa""></span></li>
+	<li><span class=""icon icon-xs fa fa-cc-mastercard""></span></li>
+	<li><span class=""icon icon-xs fa fa-cc-paypal""></span></li>
+	<li><span class=""icon icon-xs fa fa-cc-discover""></span></li>
+	<li><span class=""icon icon-xs fa fa-cc-stripe""></span></li>
+</ul>","2017-05-19 08:42:43","2017-05-19 08:42:43","1"
+"27","Footer column 2 title","footer_col_2_title","<h4>Information</h4>","2017-05-19 09:53:01","2017-05-22 05:35:22","1"

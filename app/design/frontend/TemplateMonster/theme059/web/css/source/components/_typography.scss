@@ -1,0 +1,96 @@
+/*
+* @subsection   Typography
+*/
+
+h1,
+.heading-1 {
+    font-size: 2.85rem;
+}
+
+h2,
+.heading-2 {
+    font-size: 2rem;
+}
+
+h3,
+.heading-3 {
+    font-size: 1.6rem;
+}
+
+h4,
+.heading-4 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+h5,
+.heading-5 {
+    font-size: .83rem;
+}
+
+h6,
+.heading-6 {
+    font-size: .67rem;
+}
+
+@for $i from 1 through 6 {
+    h#{$i},
+    .heading-#{$i} {
+        color: $text-dark;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 0.5em;
+    }
+}
+
+.page-title,
+.section-title {
+    text-align: center;
+    color: $text-dark;
+}
+
+.text-center {
+    text-align: center;
+}
+
+p {
+    margin-bottom: $indent-small;
+}
+
+p,
+.list,
+.contact-info {
+    a {
+        color: $primary;
+        &:hover {
+            color: $link-hover;
+        }
+    }
+}
+
+mark {
+    color: $white;
+    background: $primary;
+}
+
+em {
+    color: $primary;
+}
+
+small {
+    font-size: .8em;
+}
+
+pre {
+    white-space: normal;
+}
+
+dl {
+    dt {
+        font-weight: 700;
+    }
+    dd {
+        font-style: italic;
+        padding-left: $indent-base;
+    }
+}

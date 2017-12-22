@@ -1,0 +1,52 @@
+// Main styles
+.block-blog-categories,
+.block-recent-posts,
+.block-recent-comments{
+
+    .block-content ul li {
+        padding-bottom: 8px;
+    }
+}
+//
+.block-blog-categories {
+    .block-content {
+        #blog-show-all {
+            @include button-block;
+            @include button-block__primary;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            padding: 14px 33px;
+
+            @media (min-width: $screen-xs-min) and (max-width: $screen-md-min - 1){
+                width: auto;
+            }
+
+            &.closed .less,
+            &.opened .more{
+                display: none;
+            }
+        }
+    }
+}
+//
+.block-recent-comments {
+    .title-section {
+        font-size: 13px;
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        strong {
+            font-weight: 700;
+            color: $text-light;
+            display: inline-block;
+            width: 100%;
+
+            &:before {
+                font-size: 18px;
+                line-height: 16px;
+                vertical-align: middle;
+            }
+        }
+    }
+}

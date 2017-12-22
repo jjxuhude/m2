@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <quick_view>
+            <general>
+                <enabled>1</enabled>
+                <button_text>Quick View</button_text>
+                <button_css_class>quick-view-button</button_css_class>
+            </general>
+            <popup_settings>
+                <show_tabs>1</show_tabs>
+                <show_addto_buttons>1</show_addto_buttons>
+                <show_reviews>1</show_reviews>
+                <show_stock>1</show_stock>
+                <show_sku>1</show_sku>
+                <show_social_buttons>1</show_social_buttons>
+            </popup_settings>
+        </quick_view>
+    </default>
+</config>
