@@ -37,7 +37,7 @@ error_page 404 403 = /errors/404.php;
 location ~* ^/setup($|/) {
     root $MAGE_ROOT;
     location ~ ^/setup/index.php {
-        fastcgi_pass   fastcgi_backend;
+        fastcgi_pass   fastcgi_backend1;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include        fastcgi_params;
@@ -58,7 +58,7 @@ location ~* ^/update($|/) {
 
     location ~ ^/update/index.php {
         fastcgi_split_path_info ^(/update/index.php)(/.+)$;
-        fastcgi_pass   fastcgi_backend;
+        fastcgi_pass   fastcgi_backend1;
         fastcgi_index  index.php;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         fastcgi_param  PATH_INFO        $fastcgi_path_info;
@@ -157,7 +157,7 @@ location /media/import/ {
 # PHP entry point for main application
 location ~ (index|get|static|report|404|503)\.php$ {
     try_files $uri =404;
-    fastcgi_pass   fastcgi_backend;
+    fastcgi_pass   fastcgi_backend1;
     fastcgi_buffers 1024 4k;
 
     fastcgi_read_timeout 600s;
